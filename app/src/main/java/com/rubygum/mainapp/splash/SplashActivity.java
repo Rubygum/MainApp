@@ -78,7 +78,7 @@ public class SplashActivity extends BaseActivity {
                 Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                 SplashActivity.this.startActivity(intent);
             }
-        }, 3000);
+        }, 180000);
 
 
     }
