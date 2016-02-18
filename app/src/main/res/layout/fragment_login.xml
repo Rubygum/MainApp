@@ -23,6 +23,15 @@
 
 
         <ImageView
+            android:layout_gravity="center"
+            android:layout_width="140dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="-20dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/rainbows"/>
+
+
+        <ImageView
             android:id="@+id/logo"
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -30,9 +39,10 @@
             android:src="@drawable/rubyko" />
 
         <com.rey.material.widget.Button
+            android:layout_gravity="center"
             android:id="@+id/loginBtn"
             style="@style/Material.Drawable.Ripple.Touch.Light"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="48dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/bg_window_dark"
@@ -46,9 +56,10 @@
             app:rd_rippleAnimDuration="300" />
 
         <com.rey.material.widget.Button
+            android:layout_gravity="center"
             android:id="@+id/regisrBtn"
             style="@style/Material.Drawable.Ripple.Touch.Light"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="48dp"
             android:background="@drawable/bg_window_dark"
             android:padding="15dp"
