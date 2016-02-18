@@ -1,8 +1,6 @@
-package com.rubygum.mainapp;
+package com.rubyko.mainapp;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 
 /**
  * Created by yegor on 14/02/16.

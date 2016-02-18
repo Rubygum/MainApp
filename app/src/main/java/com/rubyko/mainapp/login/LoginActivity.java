@@ -1,9 +1,11 @@
-package com.rubygum.mainapp.login;
+package com.rubyko.mainapp.login;
 
 import android.os.Bundle;
+import android.os.Handler;
 
-import com.rubygum.mainapp.BaseActivity;
-import com.rubygum.mainapp.R;
+import com.rubyko.mainapp.BaseActivity;
+import com.rubyko.mainapp.R;
+
 
 /**
  * Created by yegor on 14/02/16.
@@ -14,7 +16,13 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        addFragment(new Bundle(), LoginFragment.class);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                addFragment(new Bundle(), LoginFragment.class);
+            }
+        }, 1000);
     }
 
     @Override

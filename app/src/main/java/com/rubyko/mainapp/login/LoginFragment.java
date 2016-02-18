@@ -1,4 +1,4 @@
-package com.rubygum.mainapp.login;
+package com.rubyko.mainapp.login;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,14 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rubygum.mainapp.BaseActivity;
-import com.rubygum.mainapp.BaseFragment;
-import com.rubygum.mainapp.R;
+import com.rubyko.mainapp.BlurFragment;
+import com.rubyko.mainapp.R;
 
 /**
  * Created by yegor on 14/02/16.
  */
-public class LoginFragment extends BaseFragment<LoginActivity> {
+public class LoginFragment extends BlurFragment<LoginActivity> {
 
     @Nullable
     @Override
