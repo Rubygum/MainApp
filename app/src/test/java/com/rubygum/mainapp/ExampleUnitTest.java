@@ -1,4 +1,4 @@
-package com.rubygum.mainapp;
+package com.rubyko.mainapp;
 
 import org.junit.Test;
 
