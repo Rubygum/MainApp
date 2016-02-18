@@ -20,37 +20,27 @@
         android:orientation="vertical"
         >
 
-        <com.rubyko.mainapp.login.view.CustomizeTextField
-            android:layout_height="wrap_content"
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/userName"
             android:layout_width="match_parent"
-            android:layout_marginBottom="6dp"
-            app:mtf_image="@drawable/ic_perm_identity_black_24dp">
-
-            <EditText
-                android:id="@+id/userName"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/text_userName_fied"
-                android:textColor="#080808"
-                android:textSize="20sp" />
-        </com.rubyko.mainapp.login.view.CustomizeTextField>
-
-
-        <com.rubyko.mainapp.login.view.CustomizeTextField
             android:layout_height="wrap_content"
+            android:hint="@string/text_userName_fied"
+            app:met_iconLeft="@drawable/ic_perm_identity_black_24dp"
+            app:met_iconPadding="0dp"
+            app:met_maxCharacters="5" />
+
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/login"
             android:layout_width="match_parent"
-            android:layout_marginBottom="6dp"
-            app:mtf_image="@drawable/ic_account_circle_black_48dp">
+            android:layout_height="wrap_content"
+            android:hint="@string/text_login_fied"
+            app:met_iconLeft="@drawable/ic_account_circle_black_48dp"
+            app:met_iconPadding="0dp"
+            app:met_maxCharacters="5" />
 
-            <EditText
-                android:id="@+id/login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/text_login_fied"
-                android:textColor="#080808"
-                android:textSize="20sp" />
 
-        </com.rubyko.mainapp.login.view.CustomizeTextField>
 
         <com.rubyko.mainapp.login.view.CustomizeTextField
             android:layout_height="wrap_content"
