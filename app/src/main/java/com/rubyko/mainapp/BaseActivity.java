@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentTransaction;
  */
 public abstract class BaseActivity extends FragmentActivity {
 
-    public final void replaceFragment(final Bundle bundle, final Class fragmentClass){
+    public void replaceFragment(final Bundle bundle, final Class fragmentClass){
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {

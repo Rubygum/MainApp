@@ -8,19 +8,14 @@
     android:background="@android:color/white"
     tools:context=".splash.SplashActivity">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:padding="24dp"
-        android:src="@drawable/rubyko" />
-
     <FrameLayout
         android:id="@+id/activityContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-
+    <com.rubyko.mainapp.login.view.ParallaxViewPager
+        android:id="@+id/vpPager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
 
 </RelativeLayout>
