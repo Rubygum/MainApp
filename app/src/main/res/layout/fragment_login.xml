@@ -5,58 +5,60 @@
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#AAFFFFFF"
+    android:background="#CCFFFFFF"
     android:clipChildren="false"
     android:clipToPadding="false"
     tools:context=".splash.SplashActivity">
 
 
 
-    <ImageView
-        android:layout_above="@+id/login_fragment_layout"
-        android:id="@+id/logo"
+    <LinearLayout
+        android:id="@+id/login_fragment_layout"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:padding="24dp"
-        android:src="@drawable/rubyko" />
+        android:orientation="vertical"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp">
 
-        <LinearLayout
-            android:id="@+id/login_fragment_layout"
+
+        <ImageView
+            android:id="@+id/logo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="vertical"
-            android:paddingLeft="50dp"
-            android:paddingRight="50dp">
+            android:layout_height="100dp"
+            android:padding="24dp"
+            android:src="@drawable/rubyko" />
 
+        <com.rey.material.widget.Button
+            android:id="@+id/loginBtn"
+            style="@style/Material.Drawable.Ripple.Touch.Light"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_window_dark"
+            android:padding="15dp"
+            android:text="@string/login_btn"
+            android:textColor="@color/background_floating_material_light"
+            android:textSize="14sp"
+            app:rd_cornerRadius="15dp"
+            app:rd_enable="true"
+            app:rd_maxRippleRadius="match_view"
+            app:rd_rippleAnimDuration="300" />
 
-            <com.rey.material.widget.Button
-                android:id="@+id/loginBtn"
-                style="@style/Material.Drawable.Ripple.Touch.Light"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:padding="15dp"
-                android:text="@string/login_btn"
-                android:textSize="25sp"
-                app:rd_cornerRadius="7dp"
-                app:rd_enable="true"
-                app:rd_maxRippleRadius="match_view"
-                app:rd_rippleAnimDuration="300" />
-
-            <com.rey.material.widget.Button
-                android:id="@+id/regisrBtn"
-                style="@style/Material.Drawable.Ripple.Touch.Light"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:text="@string/registr_btn"
-                android:textSize="25sp"
-                app:rd_cornerRadius="7dp"
-                app:rd_enable="true"
-                app:rd_maxRippleRadius="match_view"
-                app:rd_rippleAnimDuration="300" />
-        </LinearLayout>
+        <com.rey.material.widget.Button
+            android:id="@+id/regisrBtn"
+            style="@style/Material.Drawable.Ripple.Touch.Light"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_window_dark"
+            android:padding="15dp"
+            android:text="@string/registr_btn"
+            android:textColor="@color/background_floating_material_light"
+            android:textSize="14sp"
+            app:rd_cornerRadius="15dp"
+            app:rd_enable="true"
+            app:rd_maxRippleRadius="match_view"
+            app:rd_rippleAnimDuration="300" />
+    </LinearLayout>
 
 </RelativeLayout>

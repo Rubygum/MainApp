@@ -40,7 +40,7 @@ public class LoginActivity extends BaseActivity implements FragmentManager.OnBac
         mLogo = (ImageView) findViewById(R.id.logo);
 
         vpPager = (ParallaxViewPager) findViewById(R.id.vpPager);
-        vpPager.setBackgroundResource(R.drawable.bkg2);
+        vpPager.setBackgroundResource(R.drawable.bkg3);
         adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
         adapterViewPager.addFragment(new ChooseFragment(), vpPager);
         vpPager.setAdapter(adapterViewPager);
