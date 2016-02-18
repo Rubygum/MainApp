@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MainApp</string>
+    <string name="registr_btn">Registration</string>
+    <string name="login_btn">Log in</string>
+    <string name="done_btn">Done</string>
+    <string name="text_login_fied">Login</string>
+    <string name="text_password_fied">Password</string>
+    <string name="text_confirm_password_fied">Confirm password</string>
+    <string name="text_userName_fied">User name</string>
 </resources>

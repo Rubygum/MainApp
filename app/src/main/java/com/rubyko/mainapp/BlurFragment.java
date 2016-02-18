@@ -25,7 +25,6 @@ public class BlurFragment<T extends BaseActivity> extends BaseFragment<T> {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         mBlurEngine = new BlurDialogEngine(getFragmentActivity());
         mBlurEngine.debug(false);
         mBlurEngine.setBlurRadius(8);

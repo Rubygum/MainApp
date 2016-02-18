@@ -7,18 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rubyko.mainapp.BaseFragment;
-import com.rubyko.mainapp.BlurFragment;
 import com.rubyko.mainapp.R;
 
 /**
- * Created by yegor on 14/02/16.
+ * Created by alex on 16.02.16.
  */
-public class LoginFragment extends BaseFragment<LoginActivity> {
+public final class LoginFragment extends BaseFragment<LoginActivity> {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_login, container, false);
+    public final View onCreateView(final LayoutInflater pInflater, final ViewGroup pContainer, final Bundle pSavedInstanceState) {
+        View view = pInflater.inflate(R.layout.fragment_logining, pContainer, false);
         return view;
     }
 
