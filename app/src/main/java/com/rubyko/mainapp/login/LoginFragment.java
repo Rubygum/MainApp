@@ -6,13 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rubyko.mainapp.BaseFragment;
 import com.rubyko.mainapp.BlurFragment;
 import com.rubyko.mainapp.R;
 
 /**
  * Created by yegor on 14/02/16.
  */
-public class LoginFragment extends BlurFragment<LoginActivity> {
+public class LoginFragment extends BaseFragment<LoginActivity> {
 
     @Nullable
     @Override

@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentTransaction;
  */
 public abstract class BaseActivity extends FragmentActivity {
 
-    protected final void addFragment(final Bundle bundle, final Class fragmentClass){
+    protected final void replaceFragment(final Bundle bundle, final Class fragmentClass){
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -19,17 +19,16 @@ public abstract class BaseActivity extends FragmentActivity {
                     fragment.setArguments(bundle);
                     FragmentManager fragmentManager = BaseActivity.this.getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.add(getContainerId(), fragment, fragment.getTag());
+                    fragmentTransaction.replace(getContainerId(), fragment, fragment.getTag());
                     fragmentTransaction.commit();
-                } catch (InstantiationException e){
-                    e.printStackTrace();
-                } catch (IllegalAccessException e){
+                 //   fragment.show(fragmentTransaction, fragment.getTag());
+                } catch (Exception e){
                     e.printStackTrace();
                 }
             }
         });
     }
 
-    protected abstract  int getContainerId();
+    protected abstract int getContainerId();
 
 }
