@@ -10,7 +10,6 @@
     android:clipToPadding="false"
     tools:context=".splash.SplashActivity">
 
-
     <LinearLayout
         android:id="@+id/login_fragment_layout"
         android:layout_width="match_parent"
@@ -21,14 +20,6 @@
         android:paddingLeft="50dp"
         android:paddingRight="50dp">
 
-        <!--
-              <ImageView
-                  android:layout_gravity="center"
-                  android:layout_width="140dp"
-                  android:layout_height="70dp"
-                  android:layout_marginBottom="-20dp"
-                  android:scaleType="fitXY"
-                  android:src="@drawable/rainbows"/>-->
 
         <ImageView
             android:layout_width="140dp"
@@ -88,5 +79,7 @@
 
 
     </LinearLayout>
+
+
 
 </RelativeLayout>

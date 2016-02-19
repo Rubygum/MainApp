@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -53,6 +54,10 @@ public class LoginActivity extends BaseActivity implements FragmentManager.OnBac
         return R.id.activityContainer;
     }
 
+    public void explode(View view) {
+        explosionField.explode(view);
+    }
+
 
     public final void replaceFragment(final Bundle bundle, final Class fragmentClass) {
         this.runOnUiThread(new Runnable() {
@@ -89,21 +94,6 @@ public class LoginActivity extends BaseActivity implements FragmentManager.OnBac
         }*/
     }
 
-    private void destroy() {
-        mLogo.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                explosionField.explode(mLogo);
-            }
-        }, 500);
-        mLogo.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                LoginActivity.this.finish();
-            }
-        }, 1000);
-    }
-
 
     // Extend from SmartFragmentStatePagerAdapter now instead for more dynamic ViewPager items
     public static class MyPagerAdapter extends SmartFragmentStatePagerAdapter {
@@ -125,13 +115,9 @@ public class LoginActivity extends BaseActivity implements FragmentManager.OnBac
             arrFragment.add(frag);
         }
 
-        public void clearAllFragments() {
-            arrFragment.clear();
-        }
 
         public void addFragment(BaseFragment frag, ViewPager vpPager) {
-            this.notifyDataSetChanged();
-            vpPager.setCurrentItem(0);
+          //  vpPager.setCurrentItem(0);
             arrFragment.add(frag);
             this.notifyDataSetChanged();
             vpPager.setCurrentItem(this.getCount() - 1);

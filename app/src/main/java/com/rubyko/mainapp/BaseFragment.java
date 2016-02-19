@@ -3,9 +3,11 @@ package com.rubyko.mainapp;
 
 import android.app.Dialog;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.view.Display;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,6 +17,22 @@ import android.widget.RelativeLayout;
  * Created by yegor on 14/02/16.
  */
 public class BaseFragment<T extends BaseActivity> extends DialogFragment {
+
+
+    protected int screenWidth;
+    protected int screenHeight;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        screenWidth = size.x;
+        screenHeight = size.y;
+    }
+
 
     @Override
     public Dialog onCreateDialog(final Bundle savedInstanceState) {

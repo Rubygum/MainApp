@@ -1,14 +1,31 @@
 package com.rubyko.mainapp;
 
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.Display;
 
 /**
  * Created by yegor on 14/02/16.
  */
 public abstract class BaseActivity extends FragmentActivity {
+
+    int screenWidth;
+    int screenHeight;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        screenWidth = size.x;
+        screenHeight = size.y;
+    }
+
 
     public void replaceFragment(final Bundle bundle, final Class fragmentClass){
         this.runOnUiThread(new Runnable() {
@@ -50,6 +67,9 @@ public abstract class BaseActivity extends FragmentActivity {
             }
         });
     }
+
+
+
 
     protected abstract int getContainerId();
 
