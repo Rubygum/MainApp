@@ -22,12 +22,20 @@
         android:paddingRight="50dp">
 
 
-        <ImageView
+   <!--     <ImageView
             android:layout_gravity="center"
             android:layout_width="140dp"
             android:layout_height="70dp"
             android:layout_marginBottom="-20dp"
             android:scaleType="fitXY"
+            android:src="@drawable/rainbows"/> -->
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="140dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="-20dp"
+            android:scaleType="centerInside"
             android:src="@drawable/rainbows"/>
 
 
@@ -51,7 +59,7 @@
             android:text="@string/login_btn"
             android:textColor="@color/background_floating_material_light"
             android:textSize="14sp"
-            app:rd_cornerRadius="5dp"
+            app:rd_cornerRadius="15dp"
             app:rd_enable="true"
             app:rd_maxRippleRadius="match_view"
             app:rd_rippleAnimDuration="300" />
@@ -67,7 +75,7 @@
             android:text="@string/registr_btn"
             android:textColor="@color/background_floating_material_light"
             android:textSize="14sp"
-            app:rd_cornerRadius="5dp"
+            app:rd_cornerRadius="15dp"
             app:rd_enable="true"
             app:rd_maxRippleRadius="match_view"
             app:rd_rippleAnimDuration="300" />
