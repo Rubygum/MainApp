@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CCFFFFFF"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    tools:context=".splash.SplashActivity">
+
+
+
+    <LinearLayout
+        android:id="@+id/login_fragment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp">
+
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="140dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="-20dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/rainbows"/>
+
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:padding="24dp"
+            android:src="@drawable/rubyko" />
+
+        <com.rey.material.widget.Button
+            android:layout_gravity="center"
+            android:id="@+id/loginBtn"
+            style="@style/Material.Drawable.Ripple.Touch.Light"
+            android:layout_width="150dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_window_dark"
+            android:padding="15dp"
+            android:text="@string/login_btn"
+            android:textColor="@color/background_floating_material_light"
+            android:textSize="14sp"
+            app:rd_cornerRadius="15dp"
+            app:rd_enable="true"
+            app:rd_maxRippleRadius="match_view"
+            app:rd_rippleAnimDuration="300" />
+
+        <com.rey.material.widget.Button
+            android:layout_gravity="center"
+            android:id="@+id/regisrBtn"
+            style="@style/Material.Drawable.Ripple.Touch.Light"
+            android:layout_width="150dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_window_dark"
+            android:padding="15dp"
+            android:text="@string/registr_btn"
+            android:textColor="@color/background_floating_material_light"
+            android:textSize="14sp"
+            app:rd_cornerRadius="15dp"
+            app:rd_enable="true"
+            app:rd_maxRippleRadius="match_view"
+            app:rd_rippleAnimDuration="300" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>
