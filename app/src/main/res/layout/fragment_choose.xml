@@ -11,48 +11,54 @@
     tools:context=".splash.SplashActivity">
 
 
-
     <LinearLayout
         android:id="@+id/login_fragment_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="vertical"
+        android:paddingBottom="20dp"
         android:paddingLeft="50dp"
         android:paddingRight="50dp">
 
-
-   <!--     <ImageView
-            android:layout_gravity="center"
-            android:layout_width="140dp"
-            android:layout_height="70dp"
-            android:layout_marginBottom="-20dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/rainbows"/> -->
+        <!--
+              <ImageView
+                  android:layout_gravity="center"
+                  android:layout_width="140dp"
+                  android:layout_height="70dp"
+                  android:layout_marginBottom="-20dp"
+                  android:scaleType="fitXY"
+                  android:src="@drawable/rainbows"/>-->
 
         <ImageView
-            android:layout_gravity="center"
             android:layout_width="140dp"
             android:layout_height="70dp"
-            android:layout_marginBottom="-20dp"
+            android:layout_gravity="center"
             android:scaleType="centerInside"
-            android:src="@drawable/rainbows"/>
+            android:src="@drawable/robot_512" />
 
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="-20dp"
+            android:background="@drawable/bg_line_dark" />
 
         <ImageView
             android:id="@+id/logo"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:padding="24dp"
+            android:layout_marginBottom="-10dp"
             android:src="@drawable/rubyko" />
 
 
         <com.rey.material.widget.Button
-            android:layout_gravity="center"
             android:id="@+id/loginBtn"
             style="@style/Material.Drawable.Ripple.Touch.Light"
             android:layout_width="150dp"
             android:layout_height="48dp"
+            android:layout_gravity="center"
             android:layout_marginBottom="20dp"
             android:background="@drawable/bg_window_dark"
             android:padding="15dp"
@@ -65,11 +71,11 @@
             app:rd_rippleAnimDuration="300" />
 
         <com.rey.material.widget.Button
-            android:layout_gravity="center"
             android:id="@+id/regisrBtn"
             style="@style/Material.Drawable.Ripple.Touch.Light"
             android:layout_width="150dp"
             android:layout_height="48dp"
+            android:layout_gravity="center"
             android:background="@drawable/bg_window_dark"
             android:padding="15dp"
             android:text="@string/registr_btn"
