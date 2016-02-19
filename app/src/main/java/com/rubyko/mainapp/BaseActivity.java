@@ -31,6 +31,26 @@ public abstract class BaseActivity extends FragmentActivity {
         });
     }
 
+    public void showFragment(final Bundle bundle, final Class fragmentClass){
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    BaseFragment fragment = (BaseFragment) fragmentClass.newInstance();
+                    fragment.setArguments(bundle);
+                    FragmentManager fragmentManager = BaseActivity.this.getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.addToBackStack(fragment.getTag());
+                    fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out,
+                            android.R.anim.fade_in, android.R.anim.fade_out);
+                    fragment.show(fragmentTransaction, fragment.getTag());
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
     protected abstract int getContainerId();
 
 }

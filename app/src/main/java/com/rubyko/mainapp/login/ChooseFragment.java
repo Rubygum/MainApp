@@ -18,7 +18,7 @@ public final class ChooseFragment extends BaseFragment<LoginActivity> implements
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_login, container, false);
+        final View view = inflater.inflate(R.layout.fragment_choose, container, false);
         final Button loginBtn = (Button) view.findViewById(R.id.loginBtn);
         final Button registrBtn = (Button) view.findViewById(R.id.regisrBtn);
         loginBtn.setOnClickListener(this);
