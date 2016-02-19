@@ -1,5 +1,6 @@
 package com.rubyko.mainapp.login;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.balysv.materialripple.MaterialRippleLayout;
 import com.rubyko.mainapp.BaseFragment;
 import com.rubyko.mainapp.R;
 
@@ -23,6 +25,8 @@ public final class ChooseFragment extends BaseFragment<LoginActivity> implements
         final Button registrBtn = (Button) view.findViewById(R.id.regisrBtn);
         loginBtn.setOnClickListener(this);
         registrBtn.setOnClickListener(this);
+
+
         return view;
     }
 
