@@ -18,12 +18,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <EditText
+        <com.rey.material.widget.EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/text_login_fied"
             android:textColor="#080808"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:et_inputId="@+id/textfield_et_label_input"
+            app:et_supportMode="none"
+            app:v_styleId="@style/DarkEditText"/>
 
         <EditText
             android:layout_width="match_parent"

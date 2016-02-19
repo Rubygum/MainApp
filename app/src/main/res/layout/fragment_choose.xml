@@ -38,6 +38,7 @@
             android:padding="24dp"
             android:src="@drawable/rubyko" />
 
+
         <com.rey.material.widget.Button
             android:layout_gravity="center"
             android:id="@+id/loginBtn"
@@ -50,7 +51,7 @@
             android:text="@string/login_btn"
             android:textColor="@color/background_floating_material_light"
             android:textSize="14sp"
-            app:rd_cornerRadius="15dp"
+            app:rd_cornerRadius="5dp"
             app:rd_enable="true"
             app:rd_maxRippleRadius="match_view"
             app:rd_rippleAnimDuration="300" />
@@ -66,7 +67,7 @@
             android:text="@string/registr_btn"
             android:textColor="@color/background_floating_material_light"
             android:textSize="14sp"
-            app:rd_cornerRadius="15dp"
+            app:rd_cornerRadius="5dp"
             app:rd_enable="true"
             app:rd_maxRippleRadius="match_view"
             app:rd_rippleAnimDuration="300" />
