@@ -5,9 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.rubyko.mainapp.BaseFragment;
 import com.rubyko.mainapp.R;
@@ -15,7 +13,7 @@ import com.rubyko.mainapp.R;
 /**
  * Created by alex on 16.02.16.
  */
-public final class LoginFragment extends BaseFragment<LoginActivity> implements View.OnClickListener{
+public final class LoginFragment extends BaseFragment<MainActivity> implements View.OnClickListener{
 
     @Nullable
     @Override
@@ -30,7 +28,7 @@ public final class LoginFragment extends BaseFragment<LoginActivity> implements 
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.loginDoneBtn:
-                getFragmentActivity().showFragment(new Bundle(), AuthorizationFragment.class);
+                getFragmentActivity().showFragment(new Bundle(), LoadingFragment.class);
         }
     }
 

@@ -14,7 +14,7 @@ import com.rubyko.mainapp.R;
 /**
  * Created by yegor on 14/02/16.
  */
-public final class ChooseFragment extends BaseFragment<LoginActivity> implements View.OnClickListener {
+public final class ChooseFragment extends BaseFragment<MainActivity> implements View.OnClickListener {
 
     View galaxy;
 

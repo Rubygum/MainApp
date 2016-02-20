@@ -26,7 +26,7 @@ import tyrantgit.explosionfield.ExplosionField;
 /**
  * Created by yegor on 14/02/16.
  */
-public class LoginActivity extends BaseActivity implements FragmentManager.OnBackStackChangedListener {
+public class MainActivity extends BaseActivity implements FragmentManager.OnBackStackChangedListener {
 
     private ExplosionField explosionField;
     private ImageView mLogo;

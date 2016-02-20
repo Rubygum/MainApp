@@ -15,7 +15,7 @@ import com.rubyko.mainapp.R;
 import com.rubyko.mainapp.login.validation.LocalValidator;
 import com.rubyko.mainapp.login.validation.LocalValidatorException;
 
-public final class RegistrationFragment extends BaseFragment<LoginActivity> implements View.OnClickListener {
+public final class RegistrationFragment extends BaseFragment<MainActivity> implements View.OnClickListener {
 
     private EditText mUserNameEdt;
     private EditText mLoginEdt;
@@ -28,12 +28,12 @@ public final class RegistrationFragment extends BaseFragment<LoginActivity> impl
     @Override
     public final View onCreateView(final LayoutInflater pInflater, final ViewGroup pContainer, final Bundle pSavedInstanceState) {
         final View view = pInflater.inflate(R.layout.fragment_registration, pContainer, false);
-        mUserNameEdt = (EditText) view.findViewById(R.id.userName);
-        mLoginEdt = (EditText) view.findViewById(R.id.login);
-        mPassEdt = (EditText) view.findViewById(R.id.password);
-        mRepassEdt = (EditText) view.findViewById(R.id.repassword);
+        mUserNameEdt = (EditText) view.findViewById(R.id.editText_registr_userName);
+        mLoginEdt = (EditText) view.findViewById(R.id.editText_registr_login);
+        mPassEdt = (EditText) view.findViewById(R.id.editText_registr_password);
+        mRepassEdt = (EditText) view.findViewById(R.id.editText_registr_repassword);
 
-        final Button regisrBtn = (Button) view.findViewById(R.id.regisrBtn);
+        final Button regisrBtn = (Button) view.findViewById(R.id.registrDoneBtn);
         regisrBtn.setOnClickListener(this);
         return view;
     }
@@ -44,8 +44,14 @@ public final class RegistrationFragment extends BaseFragment<LoginActivity> impl
             mLocalValidator.checkUserName(mUserNameEdt.getText().toString());
             mLocalValidator.checkLogin(mLoginEdt.getText().toString());
             mLocalValidator.checkPasswords(mPassEdt.getText().toString(), mRepassEdt.getText().toString());
-        } catch (final LocalValidatorException e){
+
+            getFragmentActivity().showFragment(new Bundle(), LoadingFragment.class);
+
+        } catch (final LocalValidatorException e) {
             Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
+            }
+
     }
 }
+
+

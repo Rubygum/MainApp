@@ -23,6 +23,20 @@
         <item name="android:textSize">0dp</item>
     </style>
 
+    <style name="RubykoEditText" >
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:paddingRight">10dp</item>
+    </style>
+
+    <style name="RubykoImageTextView" >
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+
+
+
     <style name="DarkEditText"  parent="Material.Widget.EditText">
         <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Body1</item>
         <item name="android:textColor">@color/abc_primary_text_material_dark</item>

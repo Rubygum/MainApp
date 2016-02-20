@@ -7,18 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.rubyko.mainapp.BaseFragment;
 import com.rubyko.mainapp.BlurFragment;
 import com.rubyko.mainapp.R;
 
 /**
  * Created by alex on 19.02.16.
  */
-public class AuthorizationFragment extends BlurFragment<LoginActivity> {
+public class LoadingFragment extends BlurFragment<MainActivity> {
     @Nullable
     @Override
     public final View onCreateView(final LayoutInflater pInflater, final ViewGroup pContainer, final Bundle pSavedInstanceState) {
-        View view = pInflater.inflate(R.layout.fragment_authorization, pContainer, false);
+        View view = pInflater.inflate(R.layout.fragment_loading, pContainer, false);
         return view;
      }
- }
+}
+

@@ -5,7 +5,7 @@
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#AAFFFFFF"
+    android:background="#CCFFFFFF"
     android:clipChildren="false"
     android:clipToPadding="false"
     tools:context=".splash.SplashActivity">
@@ -18,44 +18,89 @@
         android:paddingLeft="30dp"
         android:paddingRight="30dp">
 
-        <android.support.design.widget.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <EditText
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/RubykoImageTextView"
+                android:src="@drawable/ic_perm_identity_black_36dp"
+                android:layout_gravity="center_vertical|start"/>
+
+            <com.rubyko.mainapp.login.view.RubykoEditText
+                android:id="@+id/editTextLogin_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPersonName"
                 android:hint="@string/text_login_fied"
-                android:textColor="#080808"
-                android:textSize="20sp" />
+                style="@style/RubykoEditText"
+                app:et_supportSingleLine="true"
+                app:et_supportTextSize="15sp"
+                app:et_labelEnable="true"
+                app:et_labelTextSize="15sp"
+                app:et_labelTextColor="@android:color/secondary_text_light"
+                app:et_labelInAnim="@anim/anim_scale_in"
+                app:et_labelOutAnim="@anim/anim_scale_out"
+                app:et_inputId="@+id/editText_login_login"
+                app:et_supportMode="charCounter"
+                app:et_supportMaxChars="20"
+                app:et_dividerAnimDuration="@integer/blur_dialog_animation_duration"
+                app:et_dividerHeight="2dp"
+                app:et_dividerColor="@android:color/secondary_text_light" />
 
-        </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
 
-        <android.support.design.widget.TextInputLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <EditText
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+              style="@style/RubykoImageTextView"
+                android:src="@drawable/ic_fingerprint_black_36dp"
+                android:layout_gravity="center_vertical|start"/>
+
+            <com.rubyko.mainapp.login.view.RubykoEditText
+                android:id="@+id/editTextLogin_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
                 android:hint="@string/text_password_fied"
-                android:password="true"
-                android:textColor="#080808"
-                android:textSize="20sp" />
+                style="@style/RubykoEditText"
+                app:et_supportSingleLine="true"
+                app:et_supportTextSize="15sp"
+                app:et_labelEnable="true"
+                app:et_labelTextSize="15sp"
+                app:et_labelTextColor="@android:color/secondary_text_light"
+                app:et_labelInAnim="@anim/anim_scale_in"
+                app:et_labelOutAnim="@anim/anim_scale_out"
+                app:et_inputId="@+id/editText_login_password"
+                app:et_supportMode="charCounter"
+                app:et_supportMaxChars="20"
+                app:et_dividerAnimDuration="@integer/blur_dialog_animation_duration"
+                app:et_dividerHeight="2dp"
+                app:et_dividerColor="@android:color/secondary_text_light"
+                />
 
-        </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
 
         <com.rey.material.widget.Button
             android:id="@+id/loginDoneBtn"
             style="@style/Material.Drawable.Ripple.Touch.Light"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="70dp"
+            android:layout_width="150dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/bg_window_dark"
             android:padding="15dp"
             android:text="@string/done_btn"
-            android:textSize="25sp"
-            app:rd_cornerRadius="7dp"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
             app:rd_enable="true"
             app:rd_maxRippleRadius="match_view"
             app:rd_rippleAnimDuration="300" />
