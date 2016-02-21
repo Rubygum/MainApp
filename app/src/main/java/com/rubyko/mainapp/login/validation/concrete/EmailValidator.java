@@ -25,12 +25,12 @@ public class EmailValidator extends LocalValidator {
 
     @Override
     public void svalidate() throws LocalValidatorException {
-        final String login = mEmailEdt.getText().toString();
-        if(login.isEmpty()){
-            throw new LoginException("Please type your email");
+        final String email = mEmailEdt.getText().toString();
+        if(email.isEmpty()){
+            throw new EmailException("Please type your email");
         }
-        if(login.length() < MIN_LOGIN_LENGTH){
-            throw new LoginException("Your email must be more than " + MIN_LOGIN_LENGTH +" letters");
+        if(!org.apache.commons.validator.routines.EmailValidator.getInstance().isValid(email)){
+            throw new EmailException("Your email format is incorrect");
         }
     }
 }

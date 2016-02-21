@@ -11,7 +11,6 @@ public abstract class LocalValidator {
 
     protected static final int MIN_PASSWORD_LENGTH = 6;
     protected static final int MIN_USERNAME_LENGTH = 4;
-    protected static final int MIN_LOGIN_LENGTH = 4;
 
     protected class PasswordException extends LocalValidatorException {
         public PasswordException(String pDetailMessage){
@@ -19,8 +18,8 @@ public abstract class LocalValidator {
         }
     }
 
-    protected class LoginException extends LocalValidatorException {
-        public LoginException(String pDetailMessage){
+    protected class EmailException extends LocalValidatorException {
+        public EmailException(String pDetailMessage){
             super(pDetailMessage);
         }
     }
