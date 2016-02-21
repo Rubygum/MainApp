@@ -3,6 +3,8 @@ package com.rubyko.mainapp.login.view;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import com.rubyko.mainapp.login.validation.LocalValidator;
@@ -13,10 +15,14 @@ import java.util.List;
 /**
  * Created by alex on 20.02.16.
  */
-public class RubykoEditText extends com.rey.material.widget.EditText  {
+public class RubykoEditText extends com.rey.material.widget.EditText implements TextWatcher {
 
     private static final int MESSAGE_ID = 0;
     private static final int ERROR_DELAY = 500;
+
+    {
+        mInputView.addTextChangedListener(this);
+    }
 
     private ValidateHandler mHandler = new ValidateHandler();
 
@@ -36,12 +42,6 @@ public class RubykoEditText extends com.rey.material.widget.EditText  {
 
     public void addValidator(LocalValidator localValidator){
         localValidators.add(localValidator);
-    }
-
-    @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {
-        this.update(true);
-        return super.onKeyUp(keyCode, event);
     }
 
     public void update(boolean isDelayed){
@@ -71,5 +71,19 @@ public class RubykoEditText extends com.rey.material.widget.EditText  {
         }
     }
 
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        this.update(true);
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+    }
 }
 
