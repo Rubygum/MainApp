@@ -1,20 +1,13 @@
-package com.rubyko.mainapp.login;
+package com.rubyko.mainapp;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.rubyko.mainapp.BaseActivity;
-import com.rubyko.mainapp.BaseFragment;
-import com.rubyko.mainapp.R;
+import com.rubyko.mainapp.login.fragment.ChooseFragment;
 import com.rubyko.mainapp.login.adapter.SmartFragmentStatePagerAdapter;
 import com.rubyko.mainapp.login.view.ParallaxViewPager;
 
@@ -26,10 +19,9 @@ import tyrantgit.explosionfield.ExplosionField;
 /**
  * Created by yegor on 14/02/16.
  */
-public class MainActivity extends BaseActivity implements FragmentManager.OnBackStackChangedListener {
+public class MainActivity extends BaseActivity {
 
     private ExplosionField explosionField;
-    private ImageView mLogo;
     private ParallaxViewPager vpPager;
     private MyPagerAdapter adapterViewPager;
 
@@ -38,15 +30,12 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         explosionField = ExplosionField.attach2Window(this);
-        mLogo = (ImageView) findViewById(R.id.logo);
 
         vpPager = (ParallaxViewPager) findViewById(R.id.vpPager);
         vpPager.setBackgroundResource(R.drawable.bkg3);
         adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
         adapterViewPager.addFragment(new ChooseFragment(), vpPager);
         vpPager.setAdapter(adapterViewPager);
-
-        getSupportFragmentManager().addOnBackStackChangedListener(this);
     }
 
     @Override
@@ -57,7 +46,6 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
     public void explode(View view) {
         explosionField.explode(view);
     }
-
 
     public final void replaceFragment(final Bundle bundle, final Class fragmentClass) {
         this.runOnUiThread(new Runnable() {
@@ -74,24 +62,11 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
         });
     }
 
-
     @Override
     public void onBackPressed() {
         if (vpPager.getCurrentItem() != 0) {
             vpPager.setCurrentItem(vpPager.getCurrentItem() - 1, true);
         } else super.onBackPressed();
-    }
-
-
-    @Override
-    public void onBackStackChanged() {
-     /*   if(getSupportFragmentManager().getBackStackEntryCount() != 1){
-            hideLogo();
-        }
-        if(getSupportFragmentManager().getBackStackEntryCount() == 0){
-            showLogo();
-            destroy();
-        }*/
     }
 
 

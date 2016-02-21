@@ -34,9 +34,7 @@
         <item name="android:layout_marginRight">5dp</item>
         <item name="android:layout_marginTop">5dp</item>
     </style>
-
-
-
+    
     <style name="DarkEditText"  parent="Material.Widget.EditText">
         <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Body1</item>
         <item name="android:textColor">@color/abc_primary_text_material_dark</item>

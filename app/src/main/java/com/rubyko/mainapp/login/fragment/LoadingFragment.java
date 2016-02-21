@@ -1,4 +1,4 @@
-package com.rubyko.mainapp.login;
+package com.rubyko.mainapp.login.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 
 import com.rubyko.mainapp.BlurFragment;
+import com.rubyko.mainapp.MainActivity;
 import com.rubyko.mainapp.R;
 
 /**

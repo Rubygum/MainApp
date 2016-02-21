@@ -30,11 +30,11 @@
                 android:layout_gravity="center_vertical|start"/>
 
             <com.rubyko.mainapp.login.view.RubykoEditText
-                android:id="@+id/editTextLogin_login"
+                android:id="@+id/editText_login_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:hint="@string/text_login_fied"
+                android:hint="@string/text_email_fied"
                 style="@style/RubykoEditText"
                 app:et_supportSingleLine="true"
                 app:et_supportTextSize="15sp"
@@ -43,8 +43,8 @@
                 app:et_labelTextColor="@android:color/secondary_text_light"
                 app:et_labelInAnim="@anim/anim_scale_in"
                 app:et_labelOutAnim="@anim/anim_scale_out"
-                app:et_inputId="@+id/editText_login_login"
-                app:et_supportMode="charCounter"
+                app:et_inputId="@+id/editText_login_email_Edt"
+                app:et_supportMode="helper"
                 app:et_supportMaxChars="20"
                 app:et_dividerAnimDuration="@integer/blur_dialog_animation_duration"
                 app:et_dividerHeight="2dp"
@@ -79,7 +79,7 @@
                 app:et_labelInAnim="@anim/anim_scale_in"
                 app:et_labelOutAnim="@anim/anim_scale_out"
                 app:et_inputId="@+id/editText_login_password"
-                app:et_supportMode="charCounter"
+                app:et_supportMode="helper"
                 app:et_supportMaxChars="20"
                 app:et_dividerAnimDuration="@integer/blur_dialog_animation_duration"
                 app:et_dividerHeight="2dp"
