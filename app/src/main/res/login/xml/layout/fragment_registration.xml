@@ -19,22 +19,22 @@
         android:paddingLeft="30dp"
         android:paddingRight="30dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <ImageView
-            style="@style/RubykoImageTextView"
-            android:src="@drawable/ic_perm_identity_black_36dp"/>
+            <ImageView
+                style="@style/RubykoImageTextView"
+                android:src="@drawable/ic_perm_identity_black_36dp"/>
 
-        <com.rubyko.mainapp.login.view.RubykoEditText
-            android:id="@+id/editText_registr_userName"
-            android:inputType="textPersonName"
-            android:hint="@string/text_userName_fied"
-            style="@style/RubykoEditText"
-            app:et_inputId="@+id/editText_registr_userName_Edt"/>
+            <com.rubyko.mainapp.login.view.RubykoEditText
+                android:id="@+id/editText_registr_userName"
+                android:inputType="textPersonName"
+                android:hint="@string/text_userName_fied"
+                style="@style/RubykoEditText"
+                app:et_inputId="@+id/editText_registr_userName_Edt"/>
 
-    </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,7 +42,7 @@
 
             <ImageView
                 style="@style/RubykoImageTextView"
-                android:src="@drawable/ic_account_circle_black_36dp"/>
+                android:src="@drawable/ic_mail_outline_black_36dp"/>
 
             <com.rubyko.mainapp.login.view.RubykoEditText
                 android:id="@+id/editText_registr_email"
@@ -90,20 +90,9 @@
 
         <com.rey.material.widget.Button
             android:id="@+id/registrDoneBtn"
-            style="@style/Material.Drawable.Ripple.Touch.Light"
-            android:layout_width="150dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/bg_window_dark"
-            android:padding="15dp"
+            style="@style/RubykoButton"
             android:text="@string/done_btn"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            app:rd_cornerRadius="15dp"
-            app:rd_enable="true"
-            app:rd_maxRippleRadius="match_view"
-            app:rd_rippleAnimDuration="300" />
+            android:layout_marginTop="50dp"/>
 
 
     </LinearLayout>

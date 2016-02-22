@@ -39,6 +39,20 @@ android {
         exclude 'META-INF/LGPL2.1'
     }
 
+    sourceSets {
+        main {
+            res.srcDirs =
+                    [
+                            'src/main/res/common/image',
+                            'src/main/res/common/xml',
+                            'src/main/res/login/image',
+                            'src/main/res/login/xml',
+                            'src/main/res/chat/image',
+                            'src/main/res/chat/xml'
+                    ]
+        }
+    }
+
 }
 
 repositories {
@@ -64,9 +78,6 @@ configurations {
     all*.exclude module: 'wagon-provider-api'
 }
 
-
-
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
@@ -89,6 +100,7 @@ dependencies {
     compile 'com.github.rey5137:material:1.2.2'
     compile 'io.saeid:fab-loading:0.6.0'
 }
+
 
 android {
     defaultConfig {

@@ -24,7 +24,7 @@
 
             <ImageView
                 style="@style/RubykoImageTextView"
-                android:src="@drawable/ic_account_circle_black_36dp" />
+                android:src="@drawable/ic_mail_outline_black_36dp" />
 
             <com.rubyko.mainapp.login.view.RubykoEditText
                 android:id="@+id/editText_login_email"
@@ -56,19 +56,9 @@
 
         <com.rey.material.widget.Button
             android:id="@+id/loginDoneBtn"
-            style="@style/Material.Drawable.Ripple.Touch.Light"
-            android:layout_width="150dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/bg_window_dark"
-            android:padding="15dp"
+            style="@style/RubykoButton"
             android:text="@string/done_btn"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            app:rd_enable="true"
-            app:rd_maxRippleRadius="match_view"
-            app:rd_rippleAnimDuration="300" />
+            android:layout_marginTop="50dp"/>
 
     </LinearLayout>
 

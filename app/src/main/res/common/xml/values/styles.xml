@@ -23,34 +23,7 @@
         <item name="android:textSize">0dp</item>
     </style>
 
-    <style name="RubykoEditText">
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@android:color/black</item>
-        <item name="android:layout_marginTop">15dp</item>
-        <item name="android:paddingRight">10dp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="et_supportSingleLine">true</item>
-        <item name="et_supportTextSize">13sp</item>
-        <item name="et_labelEnable">true</item>
-        <item name="et_labelTextSize">15sp</item>
-        <item name="et_labelTextColor">@android:color/secondary_text_light</item>
-        <item name="et_labelInAnim">@anim/anim_scale_in</item>
-        <item name="et_labelOutAnim">@anim/anim_scale_out</item>
-        <item name="et_supportMode">helper</item>
-        <item name="et_dividerAnimDuration">@integer/blur_dialog_animation_duration</item>
-        <item name="et_dividerHeight">2dp</item>
-        <item name="et_dividerColor">@android:color/secondary_text_light</item>
-    </style>
-
-    <style name="RubykoImageTextView" >
-        <item name="android:layout_marginRight">5dp</item>
-        <item name="android:layout_marginTop">5dp</item>
-        <item name="android:layout_gravity">center_vertical|start</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-    
+   
     <style name="DarkEditText"  parent="Material.Widget.EditText">
         <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Body1</item>
         <item name="android:textColor">@color/abc_primary_text_material_dark</item>
