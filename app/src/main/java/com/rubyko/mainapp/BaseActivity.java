@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Display;
 
+import com.rubyko.rmi.RmiClient;
+
 /**
  * Created by yegor on 14/02/16.
  */
