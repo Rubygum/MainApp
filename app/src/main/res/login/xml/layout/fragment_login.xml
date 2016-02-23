@@ -26,7 +26,7 @@
                 style="@style/RubykoImageTextView"
                 android:src="@drawable/ic_mail_outline_black_36dp" />
 
-            <com.rubyko.mainapp.login.view.RubykoEditText
+            <com.rubyko.client.login.view.RubykoEditText
                 android:id="@+id/editText_login_email"
                 android:inputType="textEmailAddress"
                 android:hint="@string/text_email_fied"
@@ -44,7 +44,7 @@
                 style="@style/RubykoImageTextView"
                 android:src="@drawable/ic_fingerprint_black_36dp"/>
 
-            <com.rubyko.mainapp.login.view.RubykoEditText
+            <com.rubyko.client.login.view.RubykoEditText
                 android:id="@+id/editTextLogin_password"
                 android:inputType="textPassword"
                 android:hint="@string/text_password_fied"
