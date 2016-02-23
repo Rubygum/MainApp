@@ -1,21 +1,14 @@
-package com.rubyko.mainapp;
+package com.rubyko.mainapp.common;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.RelativeLayout;
 
 import fr.tvbarthel.lib.blurdialogfragment.BlurDialogEngine;
 
 /**
  * Created by yegor on 18/02/16.
  */
-public class BlurFragment<T extends BaseActivity> extends BaseFragment<T> {
+public class RubykoBlurFragment<T extends RubykoBaseActivity> extends RubykoFragment<T> {
 /*
     /**
      * Engine used to blur.

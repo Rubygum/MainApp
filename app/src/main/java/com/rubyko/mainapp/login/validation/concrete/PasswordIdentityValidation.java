@@ -1,17 +1,19 @@
 package com.rubyko.mainapp.login.validation.concrete;
 
+import android.support.annotation.IdRes;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.EditText;
 
+import com.rubyko.mainapp.login.validation.exception.KeyNotFoundException;
 import com.rubyko.mainapp.login.validation.LocalValidator;
 import com.rubyko.mainapp.login.validation.LocalValidatorException;
+import com.rubyko.mainapp.login.validation.exception.PasswordException;
 import com.rubyko.mainapp.login.view.RubykoEditText;
 
 /**
  * Created by alex on 21.02.16.
  */
-public class PasswordIdentityValidation extends LocalValidator {
+public class PasswordIdentityValidation extends LocalValidator<String, RubykoEditText> {
 
     private final RubykoEditText mPasswordEdt;
     private final RubykoEditText mRePasswordEdt;
@@ -27,6 +29,7 @@ public class PasswordIdentityValidation extends LocalValidator {
             }
         });
         mRePasswordEdt.addValidator(this);
+        vMap.put(mPasswordEdt.getId(), mPasswordEdt);
     }
 
 
@@ -49,6 +52,12 @@ public class PasswordIdentityValidation extends LocalValidator {
             throw new PasswordException("Your passwords don't match");
         }
 
+    }
+
+    protected String getData(@IdRes Integer pViewId) throws KeyNotFoundException {
+        if(!vMap.containsKey(pViewId))
+            throw new KeyNotFoundException();
+        return vMap.get(pViewId).getText().toString();
     }
 
 }

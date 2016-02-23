@@ -1,4 +1,4 @@
-package com.rubyko.mainapp.login.view;
+package com.rubyko.mainapp.common.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 /**
  * Created by yegor on 18/02/16.
  */
-public class ParallaxViewPager extends ViewPager {
+public class RubykoParallaxViewPager extends ViewPager {
 
     public static final int FIT_WIDTH = 0;
     public static final int FIT_HEIGHT = 1;
@@ -34,13 +34,13 @@ public class ParallaxViewPager extends ViewPager {
     private float overlap;
     private OnPageChangeListener secondOnPageChangeListener;
 
-    public ParallaxViewPager(Context context) {
+    public RubykoParallaxViewPager(Context context) {
         super(context);
         init();
         setMyScroller();
     }
 
-    public ParallaxViewPager(Context context, AttributeSet attrs) {
+    public RubykoParallaxViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
         setMyScroller();
@@ -119,7 +119,7 @@ public class ParallaxViewPager extends ViewPager {
 
     private void calculateParallaxParameters() {
         if (bitmap.getWidth() < getWidth() && bitmap.getWidth() < bitmap.getHeight() && scaleType == FIT_HEIGHT) {
-            Log.w(ParallaxViewPager.class.getName(), "Invalid bitmap bounds for the current device, parallax effect will not work.");
+            Log.w(RubykoParallaxViewPager.class.getName(), "Invalid bitmap bounds for the current device, parallax effect will not work.");
         }
 
         final float ratio = (float) getHeight() / bitmap.getHeight();
@@ -179,7 +179,7 @@ public class ParallaxViewPager extends ViewPager {
      * @param bitmap
      * @return The ParallaxViewPager object itself.
      */
-    public ParallaxViewPager setBackground(Bitmap bitmap) {
+    public RubykoParallaxViewPager setBackground(Bitmap bitmap) {
         this.bitmap = bitmap;
         return this;
     }
@@ -194,7 +194,7 @@ public class ParallaxViewPager extends ViewPager {
      * @param scaleType
      * @return
      */
-    public ParallaxViewPager setScaleType(final int scaleType) {
+    public RubykoParallaxViewPager setScaleType(final int scaleType) {
         if (scaleType != FIT_WIDTH && scaleType != FIT_HEIGHT)
             throw new IllegalArgumentException("Illegal argument: scaleType must be FIT_WIDTH or FIT_HEIGHT");
         this.scaleType = scaleType;
@@ -207,7 +207,7 @@ public class ParallaxViewPager extends ViewPager {
      * @param percentage
      * @return The ParallaxViewPager object itself.
      */
-    public ParallaxViewPager setOverlapPercentage(final float percentage) {
+    public RubykoParallaxViewPager setOverlapPercentage(final float percentage) {
         if (percentage <= 0 || percentage >= 1)
             throw new IllegalArgumentException("Illegal argument: percentage must be between 0 and 1");
         overlap = percentage;
@@ -219,7 +219,7 @@ public class ParallaxViewPager extends ViewPager {
      *
      * @return The ParallaxViewPager object itself.
      */
-    public ParallaxViewPager invalidateParallaxParameters() {
+    public RubykoParallaxViewPager invalidateParallaxParameters() {
         calculateParallaxParameters();
         return this;
     }

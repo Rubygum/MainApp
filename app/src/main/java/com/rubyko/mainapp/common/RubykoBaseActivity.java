@@ -1,18 +1,17 @@
-package com.rubyko.mainapp;
+package com.rubyko.mainapp.common;
 
 import android.graphics.Point;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Display;
 
-import com.rubyko.rmi.RmiClient;
-
 /**
  * Created by yegor on 14/02/16.
  */
-public abstract class BaseActivity extends FragmentActivity {
+public abstract class RubykoBaseActivity extends FragmentActivity {
 
     int screenWidth;
     int screenHeight;
@@ -20,7 +19,6 @@ public abstract class BaseActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
@@ -28,20 +26,19 @@ public abstract class BaseActivity extends FragmentActivity {
         screenHeight = size.y;
     }
 
-
     public void replaceFragment(final Bundle bundle, final Class fragmentClass){
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    BaseFragment fragment = (BaseFragment) fragmentClass.newInstance();
+                    RubykoFragment fragment = (RubykoFragment) fragmentClass.newInstance();
                     fragment.setArguments(bundle);
-                    FragmentManager fragmentManager = BaseActivity.this.getSupportFragmentManager();
+                    FragmentManager fragmentManager = RubykoBaseActivity.this.getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.addToBackStack(fragment.getTag());
+                    fragmentTransaction.addToBackStack(fragmentClass.getName());
                     fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out,
                             android.R.anim.fade_in, android.R.anim.fade_out);
-                    fragmentTransaction.replace(getContainerId(), fragment, fragment.getTag());
+                    fragmentTransaction.replace(getContainerId(), fragment, fragmentClass.getName());
                     fragmentTransaction.commit();
                 } catch (Exception e){
                     e.printStackTrace();
@@ -50,28 +47,25 @@ public abstract class BaseActivity extends FragmentActivity {
         });
     }
 
-    public void showFragment(final Bundle bundle, final Class fragmentClass){
+    public <T extends Fragment> void showFragment(final Bundle bundle, final Class<T> fragmentClass){
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    BaseFragment fragment = (BaseFragment) fragmentClass.newInstance();
+                    RubykoFragment fragment = (RubykoFragment) fragmentClass.newInstance();
                     fragment.setArguments(bundle);
-                    FragmentManager fragmentManager = BaseActivity.this.getSupportFragmentManager();
+                    FragmentManager fragmentManager = RubykoBaseActivity.this.getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.addToBackStack(fragment.getTag());
+                    fragmentTransaction.addToBackStack(fragmentClass.getName());
                     fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out,
                             android.R.anim.fade_in, android.R.anim.fade_out);
-                    fragment.show(fragmentTransaction, fragment.getTag());
+                    fragment.show(fragmentTransaction, fragmentClass.getName());
                 } catch (Exception e){
                     e.printStackTrace();
                 }
             }
         });
     }
-
-
-
 
     protected abstract int getContainerId();
 

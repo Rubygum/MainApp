@@ -6,23 +6,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.rubyko.mainapp.BaseFragment;
-import com.rubyko.mainapp.MainActivity;
+import com.rubyko.mainapp.common.RubykoFragment;
+import com.rubyko.mainapp.common.RubykoActivity;
 import com.rubyko.mainapp.R;
+import com.rubyko.mainapp.login.server.model.NoAuthedUser;
 import com.rubyko.mainapp.login.validation.LocalValidator;
 import com.rubyko.mainapp.login.validation.concrete.EmailValidator;
 import com.rubyko.mainapp.login.validation.concrete.PasswordValidator;
 import com.rubyko.mainapp.login.view.RubykoEditText;
 
+
+import java.io.Serializable;
+
 /**
  * Created by alex on 16.02.16.
  */
-public final class LoginFragment extends BaseFragment<MainActivity> implements View.OnClickListener{
+public final class LoginFragment extends RubykoFragment<RubykoActivity> implements View.OnClickListener {
 
-    private RubykoEditText mEmailEdt, mPassEdt;
-    private LocalValidator localValidator;
+    private LocalValidator<String, RubykoEditText> localValidator;
 
     @Nullable
     @Override
@@ -31,10 +33,10 @@ public final class LoginFragment extends BaseFragment<MainActivity> implements V
         final Button loginDoneBtn = (Button) view.findViewById(R.id.loginDoneBtn);
         loginDoneBtn.setOnClickListener(this);
 
-        mEmailEdt = (RubykoEditText) view.findViewById(R.id.editText_login_email);
-        mPassEdt = (RubykoEditText) view.findViewById(R.id.editTextLogin_password);
+        final RubykoEditText emailEdt = (RubykoEditText) view.findViewById(R.id.editText_login_email);
+        final RubykoEditText passEdt = (RubykoEditText) view.findViewById(R.id.editTextLogin_password);
 
-        localValidator = new EmailValidator(mEmailEdt).and(new PasswordValidator(mPassEdt));
+        localValidator = new EmailValidator(emailEdt).and(new PasswordValidator(passEdt));
         return view;
     }
 
@@ -43,12 +45,33 @@ public final class LoginFragment extends BaseFragment<MainActivity> implements V
         switch (v.getId()){
             case R.id.loginDoneBtn: {
                 if(localValidator.isValid()) {
-                    getFragmentActivity().showFragment(new Bundle(), LoadingFragment.class);
+                    final String email = localValidator.getDataAll(R.id.editText_login_email);
+                    final String pass = localValidator.getDataAll(R.id.editTextLogin_password);
+                    final NoAuthedUser noAuthedUser = new NoAuthedUser(pass, email, null);
+                    LoadingFragment.show(getFragmentActivity(), new LoginRunnable(noAuthedUser));
                 } else {
                     localValidator.updateAll();
                 }
             }
         }
+    }
+
+    private class LoginRunnable implements Runnable, Serializable {
+
+        final NoAuthedUser noAuthedUser;
+
+        public LoginRunnable(final NoAuthedUser noAuthedUser){
+            this.noAuthedUser = noAuthedUser;
+        }
+
+        @Override
+        public void run() {
+          //  final LoginUserService loginUserService = RubykoClient.lookupService(LoginUserService.class, LoginUserService.objectName1);
+          //  AuthedUser authedUser = loginUserService.login(noAuthedUser);
+            // START MAIN FRAGMENY
+
+        }
+
     }
 
 }

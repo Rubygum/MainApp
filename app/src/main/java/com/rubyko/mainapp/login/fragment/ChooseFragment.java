@@ -7,15 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.rubyko.mainapp.BaseFragment;
-import com.rubyko.mainapp.MainActivity;
+import com.rubyko.mainapp.common.RubykoFragment;
+import com.rubyko.mainapp.common.RubykoActivity;
 import com.rubyko.mainapp.R;
 
 
 /**
  * Created by yegor on 14/02/16.
  */
-public final class ChooseFragment extends BaseFragment<MainActivity> implements View.OnClickListener {
+public final class ChooseFragment extends RubykoFragment<RubykoActivity> implements View.OnClickListener {
 
     View galaxy;
 

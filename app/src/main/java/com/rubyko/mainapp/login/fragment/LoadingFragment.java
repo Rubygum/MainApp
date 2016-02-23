@@ -9,18 +9,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.rubyko.mainapp.BlurFragment;
-import com.rubyko.mainapp.MainActivity;
+import com.rubyko.mainapp.common.RubykoBaseActivity;
+import com.rubyko.mainapp.common.RubykoBlurFragment;
+import com.rubyko.mainapp.common.RubykoActivity;
 import com.rubyko.mainapp.R;
+
+import java.io.Serializable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import io.saeid.fabloading.LoadingView;
 
 /**
  * Created by alex on 19.02.16.
  */
-public class LoadingFragment extends BlurFragment<MainActivity> implements Runnable {
+public class LoadingFragment extends RubykoBlurFragment<RubykoActivity> implements Runnable {
+
+    public static final String TASK = "TASK";
 
     private LoadingView mLoadingView;
+
+    private final ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     @Nullable
     @Override
@@ -48,11 +57,24 @@ public class LoadingFragment extends BlurFragment<MainActivity> implements Runna
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Runnable task = (Runnable) getArguments().get(LoadingFragment.TASK);
+        executorService.submit(task);
+    }
+
+    @Override
     public void run() {
         mLoadingView.startAnimation();
         if(this.getView()!=null){
             this.getView().postDelayed(this, 5_00);
         }
+    }
+
+    public static void show(RubykoBaseActivity baseActivity, Serializable runnable){
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(LoadingFragment.TASK, runnable);
+        baseActivity.showFragment(bundle, LoadingFragment.class);
     }
 
 }

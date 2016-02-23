@@ -1,4 +1,4 @@
-package com.rubyko.mainapp;
+package com.rubyko.mainapp.common;
 
 
 import android.app.Dialog;
@@ -16,7 +16,7 @@ import android.widget.RelativeLayout;
 /**
  * Created by yegor on 14/02/16.
  */
-public class BaseFragment<T extends BaseActivity> extends DialogFragment {
+public class RubykoFragment<T extends RubykoBaseActivity> extends DialogFragment {
 
 
     protected int screenWidth;

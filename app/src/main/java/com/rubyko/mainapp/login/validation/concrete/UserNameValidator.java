@@ -1,33 +1,35 @@
 package com.rubyko.mainapp.login.validation.concrete;
 
-import android.widget.EditText;
+import android.support.annotation.IdRes;
 
+import com.rubyko.mainapp.login.validation.exception.KeyNotFoundException;
 import com.rubyko.mainapp.login.validation.LocalValidator;
 import com.rubyko.mainapp.login.validation.LocalValidatorException;
+import com.rubyko.mainapp.login.validation.exception.UserNameException;
 import com.rubyko.mainapp.login.view.RubykoEditText;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.validator.util.ValidatorUtils;
 
 /**
  * Created by alex on 21.02.16.
  */
-public class UserNameValidator extends LocalValidator {
+public class UserNameValidator extends LocalValidator<String, RubykoEditText> {
 
     private final RubykoEditText mUserNameEdt;
 
     public UserNameValidator(RubykoEditText pUserNameEdt){
         this.mUserNameEdt = pUserNameEdt;
         mUserNameEdt.addValidator(this);
+        vMap.put(mUserNameEdt.getId(), mUserNameEdt);
     }
 
     @Override
-    public void update() {
+    protected void update() {
         mUserNameEdt.update(false);
     }
 
     @Override
-    public void svalidate() throws LocalValidatorException {
+    protected void svalidate() throws LocalValidatorException {
         final String userName = mUserNameEdt.getText().toString();
 
         if(userName.isEmpty()){
@@ -41,5 +43,11 @@ public class UserNameValidator extends LocalValidator {
         }
     }
 
+    @Override
+    protected String getData(@IdRes Integer pViewId) throws KeyNotFoundException {
+        if(!vMap.containsKey(pViewId))
+            throw new KeyNotFoundException();
+        return vMap.get(pViewId).getText().toString();
+    }
 
 }

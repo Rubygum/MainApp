@@ -1,4 +1,4 @@
-package com.rubyko.mainapp;
+package com.rubyko.mainapp.common;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,9 +7,10 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rubyko.mainapp.R;
 import com.rubyko.mainapp.login.fragment.ChooseFragment;
-import com.rubyko.mainapp.login.adapter.SmartFragmentStatePagerAdapter;
-import com.rubyko.mainapp.login.view.ParallaxViewPager;
+import com.rubyko.mainapp.common.adapter.SmartFragmentStatePagerAdapter;
+import com.rubyko.mainapp.common.view.RubykoParallaxViewPager;
 
 import java.util.ArrayList;
 
@@ -19,10 +20,10 @@ import tyrantgit.explosionfield.ExplosionField;
 /**
  * Created by yegor on 14/02/16.
  */
-public class MainActivity extends BaseActivity {
+public class RubykoActivity extends RubykoBaseActivity {
 
     private ExplosionField explosionField;
-    private ParallaxViewPager vpPager;
+    private RubykoParallaxViewPager vpPager;
     private MyPagerAdapter adapterViewPager;
 
     @Override
@@ -31,7 +32,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_login);
         explosionField = ExplosionField.attach2Window(this);
 
-        vpPager = (ParallaxViewPager) findViewById(R.id.vpPager);
+        vpPager = (RubykoParallaxViewPager) findViewById(R.id.vpPager);
         vpPager.setBackgroundResource(R.drawable.bkg3);
         adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
         adapterViewPager.addFragment(new ChooseFragment(), vpPager);
@@ -53,7 +54,7 @@ public class MainActivity extends BaseActivity {
             public void run() {
                 try {
                     adapterViewPager.clearFragments();
-                    BaseFragment fragment = (BaseFragment) fragmentClass.newInstance();
+                    RubykoFragment fragment = (RubykoFragment) fragmentClass.newInstance();
                     adapterViewPager.addFragment(fragment, vpPager);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -91,7 +92,7 @@ public class MainActivity extends BaseActivity {
         }
 
 
-        public void addFragment(BaseFragment frag, ViewPager vpPager) {
+        public void addFragment(RubykoFragment frag, ViewPager vpPager) {
           //  vpPager.setCurrentItem(0);
             arrFragment.add(frag);
             this.notifyDataSetChanged();
