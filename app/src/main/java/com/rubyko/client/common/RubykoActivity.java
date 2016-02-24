@@ -44,9 +44,6 @@ public class RubykoActivity extends RubykoBaseActivity {
         return R.id.activityContainer;
     }
 
-    public void explode(View view) {
-        explosionField.explode(view);
-    }
 
     public final void replaceFragment(final Bundle bundle, final Class fragmentClass) {
         this.runOnUiThread(new Runnable() {
@@ -63,6 +60,23 @@ public class RubykoActivity extends RubykoBaseActivity {
         });
     }
 
+
+    public final void addFragment(final Bundle bundle, final Class fragmentClass) {
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    RubykoFragment fragment = (RubykoFragment) fragmentClass.newInstance();
+                    adapterViewPager.addFragment(fragment, vpPager);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+
+
     @Override
     public void onBackPressed() {
         if (vpPager.getCurrentItem() != 0) {
@@ -75,7 +89,6 @@ public class RubykoActivity extends RubykoBaseActivity {
     public static class MyPagerAdapter extends SmartFragmentStatePagerAdapter {
 
         private ArrayList<Fragment> arrFragment = new ArrayList<android.support.v4.app.Fragment>();
-
 
         public MyPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
@@ -93,9 +106,10 @@ public class RubykoActivity extends RubykoBaseActivity {
 
 
         public void addFragment(RubykoFragment frag, ViewPager vpPager) {
-          //  vpPager.setCurrentItem(0);
+            vpPager.setCurrentItem(0, false);
             arrFragment.add(frag);
             this.notifyDataSetChanged();
+            vpPager.setCurrentItem(this.getCount() - 2, false);
             vpPager.setCurrentItem(this.getCount() - 1);
         }
 

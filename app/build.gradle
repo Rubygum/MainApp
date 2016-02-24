@@ -47,8 +47,8 @@ android {
                             'src/main/res/common/xml',
                             'src/main/res/login/image',
                             'src/main/res/login/xml',
-                            'src/main/res/chat/image',
-                            'src/main/res/chat/xml'
+                            'src/main/res/navigate/image',
+                            'src/main/res/navigate/xml'
                     ]
         }
     }
@@ -84,7 +84,7 @@ dependencies {
     compile 'com.android.support:palette-v7:23.1.1'
     compile 'com.google.guava:guava:11.0.2'
 
-    compile 'com.github.Rubyko:Rubyko-RMI-flexible:0.0.4'
+    compile 'com.github.Rubyko:Rubyko-RMI-flexible:0.0.5'
 
     compile 'org.apache.commons:commons-lang3:3.4'
     compile 'commons-validator:commons-validator:1.4.0'

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
@@ -46,36 +45,14 @@
 
         <com.rey.material.widget.Button
             android:id="@+id/loginBtn"
-            style="@style/Material.Drawable.Ripple.Touch.Light"
-            android:layout_width="150dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
+            style="@style/RubykoButton"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/bg_window_dark"
-            android:padding="15dp"
-            android:text="@string/login_btn"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            app:rd_cornerRadius="15dp"
-            app:rd_enable="true"
-            app:rd_maxRippleRadius="match_view"
-            app:rd_rippleAnimDuration="300" />
+            android:text="@string/login_btn" />
 
         <com.rey.material.widget.Button
             android:id="@+id/regisrBtn"
-            style="@style/Material.Drawable.Ripple.Touch.Light"
-            android:layout_width="150dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:background="@drawable/bg_window_dark"
-            android:padding="15dp"
-            android:text="@string/registr_btn"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            app:rd_cornerRadius="15dp"
-            app:rd_enable="true"
-            app:rd_maxRippleRadius="match_view"
-            app:rd_rippleAnimDuration="300" />
+            style="@style/RubykoButton"
+            android:text="@string/registr_btn" />
 
 
 

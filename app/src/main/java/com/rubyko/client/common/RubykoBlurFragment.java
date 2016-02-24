@@ -2,6 +2,7 @@ package com.rubyko.client.common;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 
 import fr.tvbarthel.lib.blurdialogfragment.BlurDialogEngine;
 
@@ -24,24 +25,29 @@ public class RubykoBlurFragment<T extends RubykoBaseActivity> extends RubykoFrag
         mBlurEngine.setDownScaleFactor(8f);
         mBlurEngine.setBlurActionBar(true);
         mBlurEngine.setUseRenderScript(true);
+        this.setRetainInstance(true);
     }
 
     @Override
     public void onResume() {
         super.onResume();
         mBlurEngine.onResume(getRetainInstance());
+        Log.w("loading", "onResume");
     }
 
     @Override
     public void onDismiss(DialogInterface dialog) {
         super.onDismiss(dialog);
         mBlurEngine.onDismiss();
+        Log.w("loading", "onDismiss");
     }
 
     @Override
     public void onDestroy() {
+        mBlurEngine.onDismiss();
         super.onDestroy();
         mBlurEngine.onDestroy();
+        Log.w("loading", "onDestroy");
     }
 
     @Override
