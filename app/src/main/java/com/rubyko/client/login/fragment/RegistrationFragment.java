@@ -62,12 +62,6 @@ public final class RegistrationFragment extends RubykoFragment<RubykoActivity> i
         }
     }
 
-
-    @Override
-    public int getPosition() {
-        return 1;
-    }
-
     private class RegisterRunnable implements Runnable, Serializable {
 
         private final NoAuthedUser noAuthedUser;

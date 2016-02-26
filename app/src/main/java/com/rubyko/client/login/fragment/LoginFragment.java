@@ -65,11 +65,6 @@ public final class LoginFragment extends RubykoFragment<RubykoActivity> implemen
             }
         }
     }
-
-    @Override
-    public int getPosition() {
-        return 1;
-    }
 }
 
 class LoginRunnable implements Runnable, Serializable {
@@ -110,6 +105,7 @@ class LoginRunnable implements Runnable, Serializable {
             hideLoadingFragment();
             Bundle bundle = new Bundle();
             bundle.putSerializable(LoadingFragment.TASK, authedUser);
+
             loginFragment.getFragmentActivity().replaceFragment(bundle, NavigateFragment.class, 2);
         }
     }

@@ -36,7 +36,7 @@ public class RubykoActivity extends RubykoBaseActivity {
         vpPager = (RubykoParallaxViewPager) findViewById(R.id.vpPager);
         vpPager.setBackgroundResource(R.drawable.bkg3);
         adapterViewPager = new RubykoPagerAdapter(getSupportFragmentManager(), vpPager);
-        adapterViewPager.replace(new ChooseFragment());
+        adapterViewPager.add(new ChooseFragment(), 0);
         vpPager.setAdapter(adapterViewPager);
     }
 
@@ -53,7 +53,7 @@ public class RubykoActivity extends RubykoBaseActivity {
                 try {
                     RubykoFragment fragment = (RubykoFragment) fragmentClass.newInstance();
                     fragment.setArguments(bundle);
-                    adapterViewPager.replace(fragment);
+                    adapterViewPager.add(fragment, pos);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

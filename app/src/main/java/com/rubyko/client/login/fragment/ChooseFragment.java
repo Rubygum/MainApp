@@ -40,8 +40,4 @@ public final class ChooseFragment extends RubykoFragment<RubykoActivity> impleme
         }
     }
 
-    @Override
-    public int getPosition() {
-        return 0;
-    }
 }

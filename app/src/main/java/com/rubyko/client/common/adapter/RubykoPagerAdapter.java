@@ -23,9 +23,8 @@ public class RubykoPagerAdapter extends SmartFragmentStatePagerAdapter {
         this.viewPager = viewPager;
     }
 
-    public void replace(RubykoFragment rubykoFragment) {
+    public void add(RubykoFragment rubykoFragment, int pos) {
         viewPager.setCurrentItem(0, false);
-        int pos = rubykoFragment.getPosition();
         if (arrFragment.size() <= pos) {
             arrFragment.add(rubykoFragment);
         } else {
@@ -35,7 +34,6 @@ public class RubykoPagerAdapter extends SmartFragmentStatePagerAdapter {
         viewPager.setCurrentItem(pos - 1, false);
         viewPager.setCurrentItem(pos);
     }
-
 
     // Returns total number of pages
     @Override

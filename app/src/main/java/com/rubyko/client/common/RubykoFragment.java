@@ -55,5 +55,4 @@ public abstract class RubykoFragment<T extends RubykoBaseActivity> extends Dialo
         return (T) getActivity();
     }
 
-    public abstract int getPosition();
 }

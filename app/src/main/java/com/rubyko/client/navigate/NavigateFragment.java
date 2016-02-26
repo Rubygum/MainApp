@@ -24,8 +24,4 @@ public class NavigateFragment extends RubykoFragment<RubykoActivity> {
         return view;
     }
 
-    @Override
-    public int getPosition() {
-        return 2;
-    }
 }
