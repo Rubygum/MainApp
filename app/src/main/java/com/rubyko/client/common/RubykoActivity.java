@@ -63,7 +63,7 @@ public class RubykoActivity extends RubykoBaseActivity {
     }
 
     public final void setLeftBound(int pos){
-        vpPager.setLeftBound(pos);
+        vpPager.setLeftBound(pos, true);
     }
 
     @Override

@@ -10,6 +10,9 @@
         <!--Action bar style-->
         <item name="android:actionBarStyle">@style/AppTheme.ActionBar</item>
         <item name="actionBarStyle">@style/AppTheme.ActionBar</item>
+
+        <item name="android:windowEnableSplitTouch">false</item>
+        <item name="android:splitMotionEvents">false</item>
     </style>
 
     <style name="AppTheme.ActionBar" parent="Widget.AppCompat.Light.ActionBar">

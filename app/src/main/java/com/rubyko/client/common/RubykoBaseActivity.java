@@ -16,8 +16,8 @@ import com.rubyko.client.RubykoApplication;
  */
 public abstract class RubykoBaseActivity extends FragmentActivity {
 
-    int screenWidth;
-    int screenHeight;
+    public static int screenWidth;
+    public static int screenHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

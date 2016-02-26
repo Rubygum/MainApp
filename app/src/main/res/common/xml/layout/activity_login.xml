@@ -6,6 +6,7 @@
     android:clipChildren="false"
     android:clipToPadding="false"
     android:background="@android:color/white"
+    android:splitMotionEvents = "false"
     tools:context=".common.RubykoActivity">
 
     <FrameLayout
@@ -15,6 +16,7 @@
 
     <com.rubyko.client.common.view.LoginBoundViewPager
         android:id="@+id/vpPager"
+        android:splitMotionEvents = "false"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"/>
 
