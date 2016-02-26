@@ -15,8 +15,6 @@ import com.rubyko.client.common.RubykoFragment;
  */
 public class NavigateFragment extends RubykoFragment<RubykoActivity> {
 
-
-
     @Nullable
     @Override
     public final View onCreateView(final LayoutInflater pInflater, final ViewGroup pContainer, final Bundle pSavedInstanceState) {

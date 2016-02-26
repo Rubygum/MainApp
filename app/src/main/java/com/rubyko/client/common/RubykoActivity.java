@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.rubyko.client.R;
 import com.rubyko.client.common.adapter.RubykoPagerAdapter;
+import com.rubyko.client.common.view.LoginBoundViewPager;
 import com.rubyko.client.login.fragment.ChooseFragment;
 import com.rubyko.client.common.adapter.SmartFragmentStatePagerAdapter;
 import com.rubyko.client.common.view.RubykoParallaxViewPager;
@@ -24,7 +25,7 @@ import tyrantgit.explosionfield.ExplosionField;
 public class RubykoActivity extends RubykoBaseActivity {
 
     private ExplosionField explosionField;
-    private RubykoParallaxViewPager vpPager;
+    private LoginBoundViewPager vpPager;
     private RubykoPagerAdapter adapterViewPager;
 
     @Override
@@ -33,7 +34,7 @@ public class RubykoActivity extends RubykoBaseActivity {
         setContentView(R.layout.activity_login);
         explosionField = ExplosionField.attach2Window(this);
 
-        vpPager = (RubykoParallaxViewPager) findViewById(R.id.vpPager);
+        vpPager = (LoginBoundViewPager) findViewById(R.id.vpPager);
         vpPager.setBackgroundResource(R.drawable.bkg3);
         adapterViewPager = new RubykoPagerAdapter(getSupportFragmentManager(), vpPager);
         adapterViewPager.add(new ChooseFragment(), 0);
@@ -61,12 +62,17 @@ public class RubykoActivity extends RubykoBaseActivity {
         });
     }
 
+    public final void setLeftBound(int pos){
+        vpPager.setLeftBound(pos);
+    }
+
     @Override
     public void onBackPressed() {
         if (vpPager.getCurrentItem() != 0) {
             vpPager.setCurrentItem(vpPager.getCurrentItem() - 1, true);
         } else super.onBackPressed();
     }
+
 
 
 

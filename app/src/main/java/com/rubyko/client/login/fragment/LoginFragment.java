@@ -107,6 +107,7 @@ class LoginRunnable implements Runnable, Serializable {
             bundle.putSerializable(LoadingFragment.TASK, authedUser);
 
             loginFragment.getFragmentActivity().replaceFragment(bundle, NavigateFragment.class, 2);
+            loginFragment.getFragmentActivity().setLeftBound(1);
         }
     }
 

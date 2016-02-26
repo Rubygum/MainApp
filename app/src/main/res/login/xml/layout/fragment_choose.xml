@@ -38,8 +38,8 @@
             android:id="@+id/logo"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:padding="24dp"
             android:layout_marginBottom="-10dp"
+            android:padding="24dp"
             android:src="@drawable/rubyko" />
 
 
@@ -55,9 +55,7 @@
             android:text="@string/registr_btn" />
 
 
-
     </LinearLayout>
-
 
 
 </RelativeLayout>

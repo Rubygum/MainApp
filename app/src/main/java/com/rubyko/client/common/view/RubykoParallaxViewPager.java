@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Scroller;
 
@@ -33,8 +34,6 @@ public class RubykoParallaxViewPager extends ViewPager {
     private int projectedWidth;
     private float overlap;
     private OnPageChangeListener secondOnPageChangeListener;
-
-
 
     public RubykoParallaxViewPager(Context context) {
         super(context);
@@ -69,6 +68,7 @@ public class RubykoParallaxViewPager extends ViewPager {
         public void startScroll(int startX, int startY, int dx, int dy, int duration) {
             super.startScroll(startX, startY, dx, dy, 400 /*1 secs*/);
         }
+
     }
 
     private void init() {
@@ -108,6 +108,7 @@ public class RubykoParallaxViewPager extends ViewPager {
             }
         });
     }
+
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {

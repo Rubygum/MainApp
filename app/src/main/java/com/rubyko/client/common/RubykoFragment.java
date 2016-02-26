@@ -51,7 +51,7 @@ public abstract class RubykoFragment<T extends RubykoBaseActivity> extends Dialo
     }
 
 
-    public final T getFragmentActivity(){
+    public final T getFragmentActivity() {
         return (T) getActivity();
     }
 
