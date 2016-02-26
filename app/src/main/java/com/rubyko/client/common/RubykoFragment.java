@@ -16,7 +16,7 @@ import android.widget.RelativeLayout;
 /**
  * Created by yegor on 14/02/16.
  */
-public class RubykoFragment<T extends RubykoBaseActivity> extends DialogFragment {
+public abstract class RubykoFragment<T extends RubykoBaseActivity> extends DialogFragment {
 
 
     protected int screenWidth;
@@ -55,5 +55,5 @@ public class RubykoFragment<T extends RubykoBaseActivity> extends DialogFragment
         return (T) getActivity();
     }
 
+    public abstract int getPosition();
 }
-// LayoutInflater inflater = LayoutInflater.from(getFragmentActivity());

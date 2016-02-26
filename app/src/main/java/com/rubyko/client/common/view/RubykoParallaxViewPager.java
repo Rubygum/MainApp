@@ -34,6 +34,8 @@ public class RubykoParallaxViewPager extends ViewPager {
     private float overlap;
     private OnPageChangeListener secondOnPageChangeListener;
 
+
+
     public RubykoParallaxViewPager(Context context) {
         super(context);
         init();
@@ -68,7 +70,6 @@ public class RubykoParallaxViewPager extends ViewPager {
             super.startScroll(startX, startY, dx, dy, 400 /*1 secs*/);
         }
     }
-
 
     private void init() {
         source = new Rect();

@@ -9,7 +9,7 @@ import fr.tvbarthel.lib.blurdialogfragment.BlurDialogEngine;
 /**
  * Created by yegor on 18/02/16.
  */
-public class RubykoBlurFragment<T extends RubykoBaseActivity> extends RubykoFragment<T> {
+public abstract class RubykoBlurFragment<T extends RubykoBaseActivity> extends RubykoFragment<T> {
 /*
     /**
      * Engine used to blur.

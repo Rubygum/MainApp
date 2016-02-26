@@ -77,5 +77,9 @@ public class LoadingFragment extends RubykoBlurFragment<RubykoActivity> implemen
         baseActivity.showFragment(bundle, LoadingFragment.class);
     }
 
+    @Override
+    public int getPosition() {
+        return -1;
+    }
 }
 

@@ -17,8 +17,6 @@ import com.rubyko.client.R;
  */
 public final class ChooseFragment extends RubykoFragment<RubykoActivity> implements View.OnClickListener {
 
-    View galaxy;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,13 +32,16 @@ public final class ChooseFragment extends RubykoFragment<RubykoActivity> impleme
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.loginBtn:
-                getFragmentActivity().replaceFragment(new Bundle(), LoginFragment.class);
+                getFragmentActivity().replaceFragment(new Bundle(), LoginFragment.class, 1);
                 break;
             case R.id.regisrBtn:
-                getFragmentActivity().replaceFragment(new Bundle(), RegistrationFragment.class);
+                getFragmentActivity().replaceFragment(new Bundle(), RegistrationFragment.class, 1);
                 break;
         }
     }
 
-
+    @Override
+    public int getPosition() {
+        return 0;
+    }
 }

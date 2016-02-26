@@ -65,6 +65,11 @@ public final class LoginFragment extends RubykoFragment<RubykoActivity> implemen
             }
         }
     }
+
+    @Override
+    public int getPosition() {
+        return 1;
+    }
 }
 
 class LoginRunnable implements Runnable, Serializable {
@@ -94,7 +99,6 @@ class LoginRunnable implements Runnable, Serializable {
     }
 
     private class LoginSucessRunnable implements Runnable {
-
         final AuthedUser authedUser;
 
         public LoginSucessRunnable(AuthedUser authedUser){
@@ -106,13 +110,11 @@ class LoginRunnable implements Runnable, Serializable {
             hideLoadingFragment();
             Bundle bundle = new Bundle();
             bundle.putSerializable(LoadingFragment.TASK, authedUser);
-            loginFragment.getFragmentActivity().addFragment(bundle, NavigateFragment.class);
+            loginFragment.getFragmentActivity().replaceFragment(bundle, NavigateFragment.class, 2);
         }
-    };
-
+    }
 
     private  class LoginExceptionTask implements Runnable {
-
         final RmiCheckedException rmiCheckedException;
 
         public LoginExceptionTask(RmiCheckedException rmiCheckedException){
@@ -124,5 +126,5 @@ class LoginRunnable implements Runnable, Serializable {
             Toast.makeText(loginFragment.getFragmentActivity(), rmiCheckedException.getMessage(), Toast.LENGTH_SHORT).show();
             hideLoadingFragment();
         }
-    };
+    }
 }
