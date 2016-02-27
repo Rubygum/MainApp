@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.rubyko.client.common.RubykoFragment;
-import com.rubyko.client.common.RubykoActivity;
+import com.rubyko.client.login.LoginRubykoActivity;
 import com.rubyko.client.R;
 
 
 /**
  * Created by yegor on 14/02/16.
  */
-public final class ChooseFragment extends RubykoFragment<RubykoActivity> implements View.OnClickListener {
+public final class ChooseFragment extends RubykoFragment<LoginRubykoActivity> implements View.OnClickListener {
 
     @Nullable
     @Override

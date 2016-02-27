@@ -9,6 +9,14 @@ import android.os.Bundle;
  */
 public class RubykoApplication extends Application implements Application.ActivityLifecycleCallbacks {
 
+    private static RubykoApplication instance;
+    {
+        instance = this;
+    }
+    public static RubykoApplication getInstance(){
+        return instance;
+    }
+
     private boolean isDestroyed = false;
     private boolean isStopped = false;
     private boolean isPaused = false;

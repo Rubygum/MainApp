@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.rubyko.client.common.RubykoBaseActivity;
 import com.rubyko.client.common.RubykoBlurFragment;
-import com.rubyko.client.common.RubykoActivity;
+import com.rubyko.client.login.LoginRubykoActivity;
 import com.rubyko.client.R;
 
 import java.io.Serializable;
@@ -23,7 +23,7 @@ import io.saeid.fabloading.LoadingView;
 /**
  * Created by alex on 19.02.16.
  */
-public class LoadingFragment extends RubykoBlurFragment<RubykoActivity> implements Runnable {
+public class LoadingFragment extends RubykoBlurFragment<LoginRubykoActivity> implements Runnable {
 
     public static final String TASK = "TASK";
 

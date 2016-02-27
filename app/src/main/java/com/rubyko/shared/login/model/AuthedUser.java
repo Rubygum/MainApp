@@ -17,7 +17,7 @@ public final class AuthedUser extends User {
     }
 
     public boolean isTokenValid(){
-        throw new UnsupportedOperationException();
+        return true;
     }
 
     public String getId() {

@@ -1,31 +1,22 @@
-package com.rubyko.client.common;
+package com.rubyko.client.login;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.rubyko.client.R;
+import com.rubyko.client.common.RubykoBaseActivity;
+import com.rubyko.client.common.RubykoFragment;
 import com.rubyko.client.common.adapter.RubykoPagerAdapter;
-import com.rubyko.client.common.view.LoginBoundViewPager;
-import com.rubyko.client.login.fragment.ChooseFragment;
-import com.rubyko.client.common.adapter.SmartFragmentStatePagerAdapter;
 import com.rubyko.client.common.view.RubykoParallaxViewPager;
-
-import java.util.ArrayList;
-
+import com.rubyko.client.login.fragment.ChooseFragment;
 import tyrantgit.explosionfield.ExplosionField;
-
 
 /**
  * Created by yegor on 14/02/16.
  */
-public class RubykoActivity extends RubykoBaseActivity {
+public class LoginRubykoActivity extends RubykoBaseActivity {
 
     private ExplosionField explosionField;
-    private LoginBoundViewPager vpPager;
+    private RubykoParallaxViewPager vpPager;
     private RubykoPagerAdapter adapterViewPager;
 
     @Override
@@ -34,7 +25,7 @@ public class RubykoActivity extends RubykoBaseActivity {
         setContentView(R.layout.activity_login);
         explosionField = ExplosionField.attach2Window(this);
 
-        vpPager = (LoginBoundViewPager) findViewById(R.id.vpPager);
+        vpPager = (RubykoParallaxViewPager) findViewById(R.id.vpPager);
         vpPager.setBackgroundResource(R.drawable.bkg3);
         adapterViewPager = new RubykoPagerAdapter(getSupportFragmentManager(), vpPager);
         adapterViewPager.add(new ChooseFragment(), 0);
@@ -46,25 +37,16 @@ public class RubykoActivity extends RubykoBaseActivity {
         return R.id.activityContainer;
     }
 
-
     public final void replaceFragment(final Bundle bundle, final Class fragmentClass, final int pos) {
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    RubykoFragment fragment = (RubykoFragment) fragmentClass.newInstance();
-                    fragment.setArguments(bundle);
-                    adapterViewPager.add(fragment, pos);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        try {
+            RubykoFragment fragment = (RubykoFragment) fragmentClass.newInstance();
+            fragment.setArguments(bundle);
+            adapterViewPager.add(fragment, pos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public final void setLeftBound(int pos){
-        vpPager.setLeftBound(pos, true);
-    }
 
     @Override
     public void onBackPressed() {
@@ -72,9 +54,5 @@ public class RubykoActivity extends RubykoBaseActivity {
             vpPager.setCurrentItem(vpPager.getCurrentItem() - 1, true);
         } else super.onBackPressed();
     }
-
-
-
-
 
 }

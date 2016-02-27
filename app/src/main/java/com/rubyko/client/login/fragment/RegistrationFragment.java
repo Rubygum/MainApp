@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 
 import com.rubyko.client.common.RubykoFragment;
-import com.rubyko.client.common.RubykoActivity;
+import com.rubyko.client.login.LoginRubykoActivity;
 import com.rubyko.client.R;
 import com.rubyko.shared.login.model.NoAuthedUser;
 import com.rubyko.client.login.validation.LocalValidator;
@@ -24,7 +24,7 @@ import com.rubyko.client.login.view.RubykoEditText;
 
 import java.io.Serializable;
 
-public final class RegistrationFragment extends RubykoFragment<RubykoActivity> implements View.OnClickListener {
+public final class RegistrationFragment extends RubykoFragment<LoginRubykoActivity> implements View.OnClickListener {
 
 
 

@@ -4,292 +4,110 @@
     android:layout_alignParentBottom="true"
     android:fillViewport="true">
 
-    <GridLayout
-
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#CCFFFFFF"
-        android:columnCount="1">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="CHOOSE SERVICE"
-            android:textSize="32sp" />
+            android:layout_marginTop="10dp"
+            android:text="SERVICES"
+            android:textSize="24sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+            <com.rubyko.client.common.view.SquareButton
+                android:id="@+id/navigate_chat_btn"
+                style="@style/RubykoButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:text="@string/navigate_chat" />
 
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:text="Button 1" />
+            <com.rubyko.client.common.view.SquareButton
+                android:id="@+id/navigate_account_btn"
+                style="@style/RubykoButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="@string/navigate_account" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="start"
-                android:text="Button 2" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+            <com.rubyko.client.common.view.SquareButton
+                style="@style/RubykoButton"
+                android:id="@+id/navigate_collision_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:text="@string/navigate_colision" />
 
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:text="Button 3" />
+            <com.rubyko.client.common.view.SquareButton
+                style="@style/RubykoButton"
+                android:id="@+id/navigate_logout_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="@string/navigate_logout" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="start"
-                android:text="Button 4" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
         </LinearLayout>
 
-
-        <TextView
-            android:layout_gravity="center_horizontal"
-            android:text="CHOOSE SERVICE"
-            android:textSize="32dip" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+            android:weightSum="2">
 
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:text="Button 1" />
+            <com.rubyko.client.common.view.SquareButton
+                style="@style/RubykoButton"
+                android:id="@+id/navigate_post_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:text="@string/navigate_post" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+            <com.rubyko.client.common.view.SquareButton
+                style="@style/RubykoButton"
+                android:id="@+id/navigate_videocall_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="@string/navigate_video_call" />
 
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="start"
-                android:text="Button 2" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:text="Button 3" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="start"
-                android:text="Button 4" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
         </LinearLayout>
 
 
-        <TextView
-            android:layout_gravity="center_horizontal"
-            android:text="CHOOSE SERVICE"
-            android:textSize="32dip" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:text="Button 1" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="start"
-                android:text="Button 2" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:text="Button 3" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="start"
-                android:text="Button 4" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-
-        <TextView
-            android:layout_gravity="center_horizontal"
-            android:text="CHOOSE SERVICE"
-            android:textSize="32dip" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:text="Button 1" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="start"
-                android:text="Button 2" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:text="Button 3" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="start"
-                android:text="Button 4" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-    </GridLayout>
+    </LinearLayout>
 
 </ScrollView>

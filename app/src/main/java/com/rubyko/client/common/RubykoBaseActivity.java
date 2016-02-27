@@ -29,8 +29,23 @@ public abstract class RubykoBaseActivity extends FragmentActivity {
         screenHeight = size.y;
     }
 
+    public <T extends Fragment> void replaceFragment(final Bundle bundle, final Class<T> fragmentClass) {
+        try {
+            RubykoFragment fragment = (RubykoFragment) fragmentClass.newInstance();
+            fragment.setArguments(bundle);
+            FragmentManager fragmentManager = RubykoBaseActivity.this.getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.addToBackStack(fragmentClass.getName());
+            fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out,
+                    android.R.anim.fade_in, android.R.anim.fade_out);
+            fragmentTransaction.replace(getContainerId(), fragment, fragmentClass.getName());
+            fragmentTransaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-    public <T extends Fragment> void showFragment(final Bundle bundle, final Class<T> fragmentClass){
+    public <T extends Fragment> void showFragment(final Bundle bundle, final Class<T> fragmentClass) {
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -43,7 +58,7 @@ public abstract class RubykoBaseActivity extends FragmentActivity {
                     fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out,
                             android.R.anim.fade_in, android.R.anim.fade_out);
                     fragment.show(fragmentTransaction, fragmentClass.getName());
-                } catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }

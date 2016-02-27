@@ -1,8 +1,8 @@
 package com.rubyko.client.login.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,12 +12,12 @@ import android.widget.Toast;
 
 import com.rubyko.client.common.RubykoClient;
 import com.rubyko.client.common.RubykoFragment;
-import com.rubyko.client.common.RubykoActivity;
+import com.rubyko.client.common.database.Database;
+import com.rubyko.client.login.LoginRubykoActivity;
 import com.rubyko.client.R;
-import com.rubyko.client.navigate.NavigateFragment;
+import com.rubyko.client.main.MainRubykoActivity;
 import com.rubyko.rmi.RmiCheckedException;
 import com.rubyko.shared.login.LoginUserService;
-import com.rubyko.shared.login.exception.DataLimitException;
 import com.rubyko.shared.login.model.AuthedUser;
 import com.rubyko.shared.login.model.NoAuthedUser;
 import com.rubyko.client.login.validation.LocalValidator;
@@ -26,13 +26,13 @@ import com.rubyko.client.login.validation.concrete.PasswordValidator;
 import com.rubyko.client.login.view.RubykoEditText;
 
 
-
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
  * Created by alex on 16.02.16.
  */
-public final class LoginFragment extends RubykoFragment<RubykoActivity> implements View.OnClickListener {
+public final class LoginFragment extends RubykoFragment<LoginRubykoActivity> implements View.OnClickListener {
 
     private LocalValidator<String, RubykoEditText> localValidator;
 
@@ -82,9 +82,12 @@ class LoginRunnable implements Runnable, Serializable {
         final LoginUserService loginUserService = RubykoClient.lookupService(LoginUserService.class, LoginUserService.objectName1);
         try {
             final AuthedUser authedUser = loginUserService.login(noAuthedUser);
+            Database.getDatabase().save(authedUser, authedUser.getClass().getName());
             loginFragment.getFragmentActivity().runOnUiThread(new LoginSucessRunnable(authedUser));
         } catch (final RmiCheckedException e){
             loginFragment.getFragmentActivity().runOnUiThread(new LoginExceptionTask(e));
+        } catch (final IOException e){
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -94,7 +97,7 @@ class LoginRunnable implements Runnable, Serializable {
     }
 
     private class LoginSucessRunnable implements Runnable {
-        final AuthedUser authedUser;
+        private final AuthedUser authedUser;
 
         public LoginSucessRunnable(AuthedUser authedUser){
             this.authedUser = authedUser;
@@ -105,9 +108,9 @@ class LoginRunnable implements Runnable, Serializable {
             hideLoadingFragment();
             Bundle bundle = new Bundle();
             bundle.putSerializable(LoadingFragment.TASK, authedUser);
-
-            loginFragment.getFragmentActivity().replaceFragment(bundle, NavigateFragment.class, 2);
-            loginFragment.getFragmentActivity().setLeftBound(2);
+            Intent intent = new Intent(loginFragment.getContext(), MainRubykoActivity.class);
+            loginFragment.startActivity(intent);
+            loginFragment.getFragmentActivity().finish();
         }
     }
 
