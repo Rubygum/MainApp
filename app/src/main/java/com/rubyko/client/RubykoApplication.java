@@ -2,7 +2,13 @@ package com.rubyko.client;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+
+import com.rubyko.client.receiver.ConnectivityChangeReceiver;
 
 /**
  * Created by yegor on 14/02/16.
@@ -10,10 +16,12 @@ import android.os.Bundle;
 public class RubykoApplication extends Application implements Application.ActivityLifecycleCallbacks {
 
     private static RubykoApplication instance;
+
     {
         instance = this;
     }
-    public static RubykoApplication getInstance(){
+
+    public static RubykoApplication getInstance() {
         return instance;
     }
 
@@ -23,6 +31,14 @@ public class RubykoApplication extends Application implements Application.Activi
 
     public RubykoApplication() {
         registerActivityLifecycleCallbacks(this);
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        registerReceiver(new ConnectivityChangeReceiver(), new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        ConnectivityManager connManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = connManager.getActiveNetworkInfo();
     }
 
     @Override
