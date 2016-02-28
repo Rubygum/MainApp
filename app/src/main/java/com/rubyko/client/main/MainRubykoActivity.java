@@ -25,7 +25,7 @@ public class MainRubykoActivity extends RubykoBaseActivity {
 
     @Override
     public void onBackPressed() {
-        if (getSupportFragmentManager().getFragments().size() == 1) {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
             finish();
         } else super.onBackPressed();
     }

@@ -13,7 +13,8 @@ import com.rubyko.client.common.database.Database;
 import com.rubyko.client.login.LoginRubykoActivity;
 import com.rubyko.client.common.RubykoFragment;
 import com.rubyko.client.main.MainRubykoActivity;
-import com.rubyko.shared.login.model.AuthedUser;
+import com.rubyko.client.main.chat.fragment.AllConvesationFragment;
+import com.rubyko.shared.common.login.model.User;
 
 import java.io.IOException;
 
@@ -49,18 +50,25 @@ public class NavigateFragment extends RubykoFragment<MainRubykoActivity> impleme
             case R.id.navigate_logout_btn:
                 performLogout();
                 break;
+            case R.id.navigate_chat_btn:
+                openChatRooms();
+                break;
         }
     }
 
     private void performLogout(){
         try {
-            Database.getDatabase().save(null, AuthedUser.class.getName());
+            Database.getDatabase().save(null, User.class.getName());
+            Intent intent = new Intent(this.getFragmentActivity(), LoginRubykoActivity.class);
+            startActivity(intent);
+            getFragmentActivity().finish();
         } catch (IOException e){
             throw new RuntimeException(e.getMessage());
         }
-        Intent intent = new Intent(this.getFragmentActivity(), LoginRubykoActivity.class);
-        startActivity(intent);
-        this.getFragmentActivity().finish();
+    }
+
+    private void openChatRooms(){
+        getFragmentActivity().replaceFragment(new Bundle(), AllConvesationFragment.class);
     }
 
 }

@@ -17,13 +17,12 @@ import com.rubyko.client.login.LoginRubykoActivity;
 import com.rubyko.client.R;
 import com.rubyko.client.main.MainRubykoActivity;
 import com.rubyko.rmi.RmiCheckedException;
-import com.rubyko.shared.login.LoginUserService;
-import com.rubyko.shared.login.model.AuthedUser;
-import com.rubyko.shared.login.model.NoAuthedUser;
+import com.rubyko.shared.boss.login.LoginUserService;
 import com.rubyko.client.login.validation.LocalValidator;
 import com.rubyko.client.login.validation.concrete.EmailValidator;
 import com.rubyko.client.login.validation.concrete.PasswordValidator;
 import com.rubyko.client.login.view.RubykoEditText;
+import com.rubyko.shared.common.login.model.User;
 
 
 import java.io.IOException;
@@ -57,8 +56,8 @@ public final class LoginFragment extends RubykoFragment<LoginRubykoActivity> imp
                 if(localValidator.isValid()) {
                     final String email = localValidator.getDataAll(R.id.editText_login_email);
                     final String pass = localValidator.getDataAll(R.id.editTextLogin_password);
-                    final NoAuthedUser noAuthedUser = new NoAuthedUser(pass, email, null);
-                    LoadingFragment.show(getFragmentActivity(), new LoginRunnable(this, noAuthedUser));
+                    final User noUser = new User(pass, email, null, null, null);
+                    LoadingFragment.show(getFragmentActivity(), new LoginRunnable(this, noUser));
                 } else {
                     localValidator.updateAll();
                 }
@@ -69,11 +68,11 @@ public final class LoginFragment extends RubykoFragment<LoginRubykoActivity> imp
 
 class LoginRunnable implements Runnable, Serializable {
 
-    private final NoAuthedUser noAuthedUser;
+    private final User noUser;
     private final LoginFragment loginFragment;
 
-    public LoginRunnable(LoginFragment loginFragment, final NoAuthedUser noAuthedUser){
-        this.noAuthedUser = noAuthedUser;
+    public LoginRunnable(LoginFragment loginFragment, final User noUser){
+        this.noUser = noUser;
         this.loginFragment = loginFragment;
     }
 
@@ -81,9 +80,9 @@ class LoginRunnable implements Runnable, Serializable {
     public void run() {
         final LoginUserService loginUserService = RubykoClient.lookupService(LoginUserService.class, LoginUserService.objectName1);
         try {
-            final AuthedUser authedUser = loginUserService.login(noAuthedUser);
-            Database.getDatabase().save(authedUser, authedUser.getClass().getName());
-            loginFragment.getFragmentActivity().runOnUiThread(new LoginSucessRunnable(authedUser));
+            final User user = loginUserService.login(noUser);
+            Database.getDatabase().save(user, user.getClass().getName());
+            loginFragment.getFragmentActivity().runOnUiThread(new LoginSucessRunnable(user));
         } catch (final RmiCheckedException e){
             loginFragment.getFragmentActivity().runOnUiThread(new LoginExceptionTask(e));
         } catch (final IOException e){
@@ -97,17 +96,17 @@ class LoginRunnable implements Runnable, Serializable {
     }
 
     private class LoginSucessRunnable implements Runnable {
-        private final AuthedUser authedUser;
+        private final User user;
 
-        public LoginSucessRunnable(AuthedUser authedUser){
-            this.authedUser = authedUser;
+        public LoginSucessRunnable(User user){
+            this.user = user;
         }
 
         @Override
         public void run() {
             hideLoadingFragment();
             Bundle bundle = new Bundle();
-            bundle.putSerializable(LoadingFragment.TASK, authedUser);
+            bundle.putSerializable(LoadingFragment.TASK, user);
             Intent intent = new Intent(loginFragment.getContext(), MainRubykoActivity.class);
             loginFragment.startActivity(intent);
             loginFragment.getFragmentActivity().finish();

@@ -48,7 +48,9 @@ android {
                             'src/main/res/login/image',
                             'src/main/res/login/xml',
                             'src/main/res/navigate/image',
-                            'src/main/res/navigate/xml'
+                            'src/main/res/navigate/xml',
+                            'src/main/res/chat/image',
+                            'src/main/res/chat/xml'
                     ]
         }
     }
@@ -86,11 +88,14 @@ dependencies {
 
     compile 'com.github.Rubyko:Rubyko-RMI-flexible:0.0.5'
 
+
     compile 'org.apache.commons:commons-lang3:3.4'
     compile 'commons-validator:commons-validator:1.4.0'
     compile 'commons-net:commons-net:1.4.0'
     compile 'org.jbox2d:jbox2d:2.1.2.2'
 
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
     compile 'com.balysv:material-ripple:1.0.2'
     compile 'tyrantgit:explosionfield:1.0.1'
     compile 'fr.tvbarthel.blurdialogfragment:lib:2.1.5'

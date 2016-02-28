@@ -14,13 +14,13 @@ import android.widget.Toast;
 import com.rubyko.client.common.RubykoFragment;
 import com.rubyko.client.login.LoginRubykoActivity;
 import com.rubyko.client.R;
-import com.rubyko.shared.login.model.NoAuthedUser;
 import com.rubyko.client.login.validation.LocalValidator;
 import com.rubyko.client.login.validation.concrete.EmailValidator;
 import com.rubyko.client.login.validation.concrete.PasswordIdentityValidation;
 import com.rubyko.client.login.validation.concrete.PasswordValidator;
 import com.rubyko.client.login.validation.concrete.UserNameValidator;
 import com.rubyko.client.login.view.RubykoEditText;
+import com.rubyko.shared.common.login.model.User;
 
 import java.io.Serializable;
 
@@ -55,8 +55,8 @@ public final class RegistrationFragment extends RubykoFragment<LoginRubykoActivi
             final String email = localValidator.getDataAll(R.id.editText_registr_email);
             final String pass = localValidator.getDataAll(R.id.editText_registr_password);
 
-            final NoAuthedUser noAuthedUser = new NoAuthedUser(pass, email, userName);
-            LoadingFragment.show(getFragmentActivity(), new RegisterRunnable(noAuthedUser));
+            final User noUser = new User(pass, email, null, null, userName);
+            LoadingFragment.show(getFragmentActivity(), new RegisterRunnable(noUser));
         } else {
             localValidator.updateAll();
         }
@@ -64,12 +64,12 @@ public final class RegistrationFragment extends RubykoFragment<LoginRubykoActivi
 
     private class RegisterRunnable implements Runnable, Serializable {
 
-        private final NoAuthedUser noAuthedUser;
+        private final User noUser;
 
         private Context context =  RegistrationFragment.this.getActivity().getApplicationContext();
 
-        public RegisterRunnable(final NoAuthedUser noAuthedUser){
-            this.noAuthedUser = noAuthedUser;
+        public RegisterRunnable(final User noUser){
+            this.noUser = noUser;
         }
 
         @Override
@@ -87,7 +87,7 @@ public final class RegistrationFragment extends RubykoFragment<LoginRubykoActivi
                 });
             }
             //   final RegisterUserService loginUserService = RubykoClient.lookupService(RegisterUserService.class, RegisterUserService.objectName1);
-         //   AuthedUser authedUser = loginUserService.register(noAuthedUser);
+         //   User authedUser = loginUserService.register(noUser);
             // START MAIN FRAGMENY
         }
 

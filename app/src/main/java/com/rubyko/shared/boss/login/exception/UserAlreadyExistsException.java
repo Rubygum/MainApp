@@ -1,4 +1,4 @@
-package com.rubyko.shared.login.exception;
+package com.rubyko.shared.boss.login.exception;
 
 
 
