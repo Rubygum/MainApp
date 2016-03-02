@@ -57,6 +57,7 @@ public final class RegistrationFragment extends RubykoFragment<LoginRubykoActivi
 
             final User noUser = new User(pass, email, null, null, userName);
             LoadingFragment.show(getFragmentActivity(), new RegisterRunnable(noUser));
+
         } else {
             localValidator.updateAll();
         }

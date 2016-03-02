@@ -63,6 +63,7 @@ public class LoadingFragment extends RubykoBlurFragment<LoginRubykoActivity> imp
         executorService.submit(task);
     }
 
+
     @Override
     public void run() {
         mLoadingView.startAnimation();

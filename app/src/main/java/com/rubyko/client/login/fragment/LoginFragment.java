@@ -16,6 +16,7 @@ import com.rubyko.client.common.database.Database;
 import com.rubyko.client.login.LoginRubykoActivity;
 import com.rubyko.client.R;
 import com.rubyko.client.main.MainRubykoActivity;
+import com.rubyko.client.main.navigate.NavigateFragment;
 import com.rubyko.rmi.RmiCheckedException;
 import com.rubyko.shared.boss.login.LoginUserService;
 import com.rubyko.client.login.validation.LocalValidator;
@@ -51,9 +52,10 @@ public final class LoginFragment extends RubykoFragment<LoginRubykoActivity> imp
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+
+        switch (v.getId()) {
             case R.id.loginDoneBtn: {
-                if(localValidator.isValid()) {
+                if (localValidator.isValid()) {
                     final String email = localValidator.getDataAll(R.id.editText_login_email);
                     final String pass = localValidator.getDataAll(R.id.editTextLogin_password);
                     final User noUser = new User(pass, email, null, null, null);
@@ -69,9 +71,10 @@ public final class LoginFragment extends RubykoFragment<LoginRubykoActivity> imp
 class LoginRunnable implements Runnable, Serializable {
 
     private final User noUser;
+
     private final LoginFragment loginFragment;
 
-    public LoginRunnable(LoginFragment loginFragment, final User noUser){
+    public LoginRunnable(LoginFragment loginFragment, final User noUser) {
         this.noUser = noUser;
         this.loginFragment = loginFragment;
     }
@@ -83,14 +86,14 @@ class LoginRunnable implements Runnable, Serializable {
             final User user = loginUserService.login(noUser);
             Database.getDatabase().save(user, user.getClass().getName());
             loginFragment.getFragmentActivity().runOnUiThread(new LoginSucessRunnable(user));
-        } catch (final RmiCheckedException e){
+        } catch (final RmiCheckedException e) {
             loginFragment.getFragmentActivity().runOnUiThread(new LoginExceptionTask(e));
-        } catch (final IOException e){
+        } catch (final IOException e) {
             throw new RuntimeException(e.getMessage());
         }
     }
 
-    private void hideLoadingFragment(){
+    private void hideLoadingFragment() {
         final FragmentManager fragmentManager = loginFragment.getFragmentActivity().getSupportFragmentManager();
         fragmentManager.popBackStackImmediate();
     }
@@ -98,7 +101,7 @@ class LoginRunnable implements Runnable, Serializable {
     private class LoginSucessRunnable implements Runnable {
         private final User user;
 
-        public LoginSucessRunnable(User user){
+        public LoginSucessRunnable(User user) {
             this.user = user;
         }
 
@@ -113,10 +116,10 @@ class LoginRunnable implements Runnable, Serializable {
         }
     }
 
-    private  class LoginExceptionTask implements Runnable {
+    private class LoginExceptionTask implements Runnable {
         final RmiCheckedException rmiCheckedException;
 
-        public LoginExceptionTask(RmiCheckedException rmiCheckedException){
+        public LoginExceptionTask(RmiCheckedException rmiCheckedException) {
             this.rmiCheckedException = rmiCheckedException;
         }
 

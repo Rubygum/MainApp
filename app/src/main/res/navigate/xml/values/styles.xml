@@ -1,0 +1,29 @@
+<resources>
+
+
+
+    <style name="RubykoButtonNavigate" parent="Material.Drawable.Ripple.Touch.Light">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:background">@drawable/bg_window_dark</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="rd_enable">true</item>
+        <item name="rd_cornerRadius">15dp</item>
+        <item name="rd_maxRippleRadius">match_view</item>
+        <item name="rd_rippleAnimDuration">300</item>
+    </style>
+
+    <style name="NavigateLinearLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">40dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:weightSum">3</item>
+    </style>
+
+
+</resources>

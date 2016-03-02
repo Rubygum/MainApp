@@ -15,99 +15,71 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:text="SERVICES"
-            android:textSize="24sp" />
+            android:text="@string/navigate_title"
+            android:textColor="@android:color/black"
+            android:textSize="30sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:weightSum="2">
+
+        <LinearLayout style="@style/NavigateLinearLayout">
 
             <com.rubyko.client.common.view.SquareButton
                 android:id="@+id/navigate_chat_btn"
-                style="@style/RubykoButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
+                style="@style/RubykoButtonNavigate"
+                android:layout_marginRight="@dimen/navigate_botton_margin"
                 android:text="@string/navigate_chat" />
 
             <com.rubyko.client.common.view.SquareButton
-                android:id="@+id/navigate_account_btn"
-                style="@style/RubykoButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:text="@string/navigate_account" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:weightSum="2">
+                android:id="@+id/navigate_videocall_btn"
+                style="@style/RubykoButtonNavigate"
+                android:layout_marginLeft="@dimen/navigate_botton_margin"
+                android:layout_marginRight="@dimen/navigate_botton_margin"
+                android:text="@string/navigate_video_call" />
 
             <com.rubyko.client.common.view.SquareButton
-                style="@style/RubykoButton"
-                android:id="@+id/navigate_collision_btn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:text="@string/navigate_colision" />
-
-            <com.rubyko.client.common.view.SquareButton
-                style="@style/RubykoButton"
                 android:id="@+id/navigate_logout_btn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
+                style="@style/RubykoButtonNavigate"
+                android:layout_marginLeft="@dimen/navigate_botton_margin"
                 android:text="@string/navigate_logout" />
 
         </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-
-            android:weightSum="2">
+        <LinearLayout style="@style/NavigateLinearLayout">
 
             <com.rubyko.client.common.view.SquareButton
-                style="@style/RubykoButton"
+                android:id="@+id/navigate_account_btn"
+                style="@style/RubykoButtonNavigate"
+                android:layout_marginRight="@dimen/navigate_botton_margin"
+                android:text="@string/navigate_account" />
+
+            <com.rubyko.client.common.view.SquareButton
                 android:id="@+id/navigate_post_btn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
+                style="@style/RubykoButtonNavigate"
+                android:layout_marginLeft="@dimen/navigate_botton_margin"
+                android:layout_marginRight="@dimen/navigate_botton_margin"
                 android:text="@string/navigate_post" />
 
             <com.rubyko.client.common.view.SquareButton
-                style="@style/RubykoButton"
-                android:id="@+id/navigate_videocall_btn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:text="@string/navigate_video_call" />
+                android:id="@+id/navigate_setting_btn"
+                style="@style/RubykoButtonNavigate"
+                android:layout_marginLeft="@dimen/navigate_botton_margin"
+                android:text="@string/navigate_setting" />
+
+        </LinearLayout>
+
+
+        <LinearLayout style="@style/NavigateLinearLayout">
+
+            <com.rubyko.client.common.view.SquareButton
+                android:id="@+id/navigate_collision_btn"
+                style="@style/RubykoButtonNavigate"
+                android:layout_marginRight="@dimen/navigate_botton_margin"
+                android:text="@string/navigate_colision" />
 
         </LinearLayout>
 
 
     </LinearLayout>
+
 
 </ScrollView>

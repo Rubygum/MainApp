@@ -7,10 +7,13 @@
     <string name="text_password_fied">Password</string>
     <string name="text_confirm_password_fied">Confirm password</string>
     <string name="text_userName_fied">User name</string>
+    <string name="navigate_title">SERVICES</string>
     <string name="navigate_chat">Chat</string>
     <string name="navigate_video_call">Video call</string>
-    <string name="navigate_colision">Colision detection</string>
-    <string name="navigate_account">My page</string>
+    <string name="navigate_colision">Collision detection</string>
+    <string name="navigate_account">Account</string>
     <string name="navigate_logout">Logout</string>
     <string name="navigate_post">My post</string>
+    <string name="navigate_setting">Settings</string>
+
 </resources>

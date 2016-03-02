@@ -10,6 +10,7 @@ import android.widget.Button;
 import com.rubyko.client.common.RubykoFragment;
 import com.rubyko.client.login.LoginRubykoActivity;
 import com.rubyko.client.R;
+import com.rubyko.client.main.navigate.NavigateFragment;
 
 
 /**

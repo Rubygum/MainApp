@@ -9,9 +9,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.rubyko.client.R;
+import com.rubyko.client.common.RubykoBaseActivity;
 import com.rubyko.client.common.database.Database;
 import com.rubyko.client.login.LoginRubykoActivity;
 import com.rubyko.client.common.RubykoFragment;
+import com.rubyko.client.login.fragment.LoginFragment;
 import com.rubyko.client.main.MainRubykoActivity;
 import com.rubyko.client.main.chat.fragment.AllConvesationFragment;
 import com.rubyko.shared.common.login.model.User;
@@ -24,6 +26,7 @@ import java.io.IOException;
  */
 public class NavigateFragment extends RubykoFragment<MainRubykoActivity> implements View.OnClickListener {
 
+
     @Nullable
     @Override
     public final View onCreateView(final LayoutInflater pInflater, final ViewGroup pContainer, final Bundle pSavedInstanceState) {
@@ -34,12 +37,14 @@ public class NavigateFragment extends RubykoFragment<MainRubykoActivity> impleme
         final Button navigateVideoCallBtn = (Button) view.findViewById(R.id.navigate_videocall_btn);
         final Button navigateCollisiobBtn = (Button) view.findViewById(R.id.navigate_collision_btn);
         final Button navigateAccountBtn = (Button) view.findViewById(R.id.navigate_account_btn);
+        final Button navigateSettingBtn = (Button) view.findViewById(R.id.navigate_setting_btn);
 
         navigateChatBtn.setOnClickListener(this);
         navigateLogoutBtn.setOnClickListener(this);
         navigateVideoCallBtn.setOnClickListener(this);
         navigateCollisiobBtn.setOnClickListener(this);
         navigateAccountBtn.setOnClickListener(this);
+        navigateSettingBtn.setOnClickListener(this);
 
         return view;
     }
