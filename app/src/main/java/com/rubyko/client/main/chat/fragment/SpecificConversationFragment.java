@@ -11,12 +11,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.rubyko.client.R;
-import com.rubyko.client.common.RubykoClient;
 import com.rubyko.client.common.RubykoFragment;
 import com.rubyko.client.main.MainRubykoActivity;
 import com.rubyko.client.main.chat.adapter.ChatRecyclerViewAdapter;
-import com.rubyko.shared.peer.chat.Conversation;
+import com.rubyko.shared.peer.chat.Speaker;
 import com.rubyko.shared.common.chat.model.Message;
+
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 /**
  * Created by alex on 27.02.16.
@@ -27,7 +29,9 @@ public class SpecificConversationFragment extends RubykoFragment<MainRubykoActiv
     private LinearLayoutManager mLayoutManager;
     private ChatRecyclerViewAdapter mAdapter;
     private EditText mMessageEdt;
-    private Conversation mConversation = (Conversation) getArguments().getSerializable(Conversation.class.getName());
+    private Speaker mSpeaker;
+
+    private Executor executor = Executors.newSingleThreadExecutor();
 
 
     @Nullable
@@ -40,6 +44,7 @@ public class SpecificConversationFragment extends RubykoFragment<MainRubykoActiv
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new ChatRecyclerViewAdapter();
         mRecyclerView.setAdapter(mAdapter);
+        mSpeaker =  (Speaker) getArguments().getSerializable(Speaker.class.getName());
 
         final Button sendBtn = (Button) view.findViewById(R.id.chat_message_send_btn);
         mMessageEdt = (EditText) view.findViewById(R.id.chat_message_content_edt);
@@ -52,15 +57,28 @@ public class SpecificConversationFragment extends RubykoFragment<MainRubykoActiv
         switch (v.getId()) {
             case R.id.chat_message_send_btn:
                 final Message message = new Message(mMessageEdt.getText().toString());
-
-                mConversation = RubykoClient.lookupService(mConversation.getCurrentUser(), Conversation.class, "111");
-                mConversation.send(message);
-
+                executor.execute(new SendMessageRunnable(mSpeaker, message));
+                mAdapter.addItem(message);
                 mRecyclerView.smoothScrollToPosition(mAdapter.getItemCount());
                 break;
         }
     }
 
+}
 
+class SendMessageRunnable implements  Runnable {
+
+    private final Message message;
+    private final Speaker speaker;
+
+    SendMessageRunnable(Speaker speaker, Message message){
+        this.message = message;
+        this.speaker = speaker;
+    }
+
+    @Override
+    public void run() {
+        speaker.speak(message);
+    }
 
 }

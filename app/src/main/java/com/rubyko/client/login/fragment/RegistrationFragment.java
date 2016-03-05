@@ -112,8 +112,8 @@ class RegisterRunnable implements Runnable, Serializable {
             Bundle bundle = new Bundle();
             bundle.putSerializable(LoadingFragment.TASK, user);
             Intent intent = new Intent(registrationFragment.getContext(), MainRubykoActivity.class);
-         //   registrationFragment.startActivity(intent);
-          //  registrationFragment.getFragmentActivity().finish();
+            registrationFragment.startActivity(intent);
+            registrationFragment.getFragmentActivity().finish();
         }
     }
 

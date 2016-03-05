@@ -1,9 +1,11 @@
 package com.rubyko.shared.common.login.model;
 
+import com.rubyko.server.RubykoServer;
 import com.rubyko.shared.boss.net.BossUserNetInfoUpdater;
 import com.rubyko.shared.common.net.model.PeerServerInfo;
 import com.rubyko.shared.peer.net.PeerUserNetInfoUpdater;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -19,8 +21,8 @@ public final class User implements Serializable, PeerUserNetInfoUpdater, BossUse
     private final String mToken;
     private final String mUserName;
 
-    private PeerServerInfo peerServerInfo;
-    private boolean online;
+    private PeerServerInfo peerServerInfo = RubykoServer.getPeerServerInfo();
+    private boolean online = false;
 
     public User(String mPassword, String pEmail) {
         this.mPassword = mPassword;
@@ -77,7 +79,16 @@ public final class User implements Serializable, PeerUserNetInfoUpdater, BossUse
 
     @Override
     public void update(PeerServerInfo peerServerInfo) {
-        this.peerServerInfo = peerServerInfo;
+        // from outer clients
+        this.peerServerInfo.setIp(peerServerInfo.getIp());
+        this.peerServerInfo.setPort(peerServerInfo.getPort());
+    }
+
+
+    private void readObject(java.io.ObjectInputStream stream)
+            throws IOException, ClassNotFoundException {
+        stream.defaultReadObject();
+        this.peerServerInfo = RubykoServer.getPeerServerInfo();
     }
 
     @Override

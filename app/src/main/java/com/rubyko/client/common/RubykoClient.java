@@ -20,8 +20,7 @@ public class RubykoClient {
     }
 
     // peer
-    public static <T> T lookupService(User user, Class<T> clazz, String name){
-        final PeerServerInfo peerServerInfo = user.getPeerServerInfo();
+    public static <T> T lookupService(PeerServerInfo peerServerInfo, Class<T> clazz, String name){
         return RmiClient.lookupService(peerServerInfo.getIp(), peerServerInfo.getPort(), name, clazz);
     }
 

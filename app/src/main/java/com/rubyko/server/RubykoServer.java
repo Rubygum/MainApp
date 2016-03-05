@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class RubykoServer {
 
-    private static final RubykoServer RUBYKO_SERVER = new RubykoServer();
+    private static final RubykoServer rubykoServer = new RubykoServer();
 
     private final RmiServer rmiServer;
     private final PeerServerInfo peerServerInfo = new PeerServerInfo();
@@ -35,12 +35,17 @@ public class RubykoServer {
 
 
     public static void updateIp(){
-        String ip = RUBYKO_SERVER.getIPAddress(false);
-        RUBYKO_SERVER.peerServerInfo.setIp(ip);
+        final String ip = rubykoServer.getIPAddress(true);
+        rubykoServer.peerServerInfo.setIp(ip);
     }
 
     public static void registerService(String serviceName, Object serviceImpl){
-       RUBYKO_SERVER.rmiServer.registerService(serviceName, serviceImpl);
+        rubykoServer.rmiServer.registerService(serviceName, serviceImpl);
+    }
+
+
+    public static PeerServerInfo getPeerServerInfo() {
+        return rubykoServer.peerServerInfo;
     }
 
     private int findFreePort() {
@@ -86,6 +91,16 @@ public class RubykoServer {
         } catch (Exception ex) {
         } // for now eat exceptions
         return "";
+    }
+
+
+    public static void start(){
+        rubykoServer.rmiServer.start();
+    }
+
+
+    public static void stop(){
+        rubykoServer.rmiServer.stop();
     }
 
 

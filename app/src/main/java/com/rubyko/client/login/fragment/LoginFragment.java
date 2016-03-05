@@ -69,12 +69,11 @@ public final class LoginFragment extends RubykoFragment<LoginRubykoActivity> imp
 
 class LoginRunnable implements Runnable, Serializable {
 
-    private final User noUser;
-
+    private final User mUser;
     private final LoginFragment loginFragment;
 
-    public LoginRunnable(LoginFragment loginFragment, final User noUser) {
-        this.noUser = noUser;
+    public LoginRunnable(LoginFragment loginFragment, final User pUser) {
+        this.mUser = pUser;
         this.loginFragment = loginFragment;
     }
 
@@ -82,7 +81,7 @@ class LoginRunnable implements Runnable, Serializable {
     public void run() {
         final LoginUserService loginUserService = RubykoClient.lookupService(LoginUserService.class, LoginUserService.objectName1);
         try {
-            final User user = loginUserService.login(noUser);
+            final User user = loginUserService.login(mUser);
             Database.getDatabase().save(user, user.getClass().getName());
             loginFragment.getFragmentActivity().runOnUiThread(new LoginSucessRunnable(user));
         } catch (final RmiCheckedException e) {
@@ -98,6 +97,7 @@ class LoginRunnable implements Runnable, Serializable {
     }
 
     private class LoginSucessRunnable implements Runnable {
+
         private final User user;
 
         public LoginSucessRunnable(User user) {
