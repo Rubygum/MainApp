@@ -56,7 +56,7 @@ public final class RegistrationFragment extends RubykoFragment<LoginRubykoActivi
             final String pass = localValidator.getDataAll(R.id.editText_registr_password);
 
             final User noUser = new User(pass, email, null, null, userName);
-            LoadingFragment.show(getFragmentActivity(), new RegisterRunnable(noUser));
+          LoadingFragment.show(getFragmentActivity(), new RegisterRunnable(noUser));
 
         } else {
             localValidator.updateAll();
@@ -93,7 +93,6 @@ public final class RegistrationFragment extends RubykoFragment<LoginRubykoActivi
         }
 
     }
-
 }
 
 
