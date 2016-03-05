@@ -1,10 +1,12 @@
-package com.rubyko.client;
+package com.rubyko;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
+import java.net.ServerSocket;
 import java.util.Collections;
 import java.util.List;
 
@@ -140,6 +142,18 @@ public class Utils {
         } catch (Exception ex) {
         } // for now eat exceptions
         return "";
+    }
+
+    public static boolean isLocalPortInUse(int port) {
+        try {
+            // ServerSocket try to open a LOCAL port
+            new ServerSocket(port).close();
+            // local port can be opened, it's available
+            return false;
+        } catch(IOException e) {
+            // local port cannot be opened, it's in use
+            return true;
+        }
     }
 
 }

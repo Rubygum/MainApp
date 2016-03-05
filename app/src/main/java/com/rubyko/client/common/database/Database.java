@@ -1,18 +1,15 @@
 package com.rubyko.client.common.database;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 
-import com.rubyko.client.RubykoApplication;
+import com.rubyko.RubykoApplication;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.io.StreamCorruptedException;
 
 /**
  * Created by alex on 27.02.16.

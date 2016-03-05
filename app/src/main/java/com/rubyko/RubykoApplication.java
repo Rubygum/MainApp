@@ -1,4 +1,4 @@
-package com.rubyko.client;
+package com.rubyko;
 
 import android.app.Activity;
 import android.app.Application;
@@ -36,9 +36,12 @@ public class RubykoApplication extends Application implements Application.Activi
     @Override
     public void onCreate() {
         super.onCreate();
-        registerReceiver(new ConnectivityChangeReceiver(), new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        ConnectivityChangeReceiver connectivityChangeReceiver = new ConnectivityChangeReceiver();
+        registerReceiver(connectivityChangeReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+
         ConnectivityManager connManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = connManager.getActiveNetworkInfo();
+
     }
 
     @Override

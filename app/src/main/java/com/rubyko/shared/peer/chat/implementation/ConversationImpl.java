@@ -20,12 +20,11 @@ public class ConversationImpl implements Conversation {
     private final List<Conversation> mChats = new ArrayList<>();
     private final List<Message> mMessages = new ArrayList<>();
     private final String chatRoomName;
-    private final ChatRecyclerViewAdapter mAdapter;
+    //private final ChatRecyclerViewAdapter mAdapter;
 
-    public ConversationImpl(ChatRecyclerViewAdapter pAdapter, String chatRoomName) throws IOException, ClassNotFoundException {
+    public ConversationImpl(String chatRoomName) throws IOException, ClassNotFoundException {
         this.chatRoomName = chatRoomName;
         this.currentUser = Database.getDatabase().get(User.class.getName());
-        this.mAdapter = pAdapter;
     }
 
     @Override
@@ -37,7 +36,8 @@ public class ConversationImpl implements Conversation {
 
     @Override
     public void receive(Message message) {
-        mAdapter.addItem(message);
+        System.out.println(message.getMessage());
+     //   mAdapter.addItem(message);
     }
 
     @Override

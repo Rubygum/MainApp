@@ -21,7 +21,7 @@ public class RubykoClient {
 
     // peer
     public static <T> T lookupService(User user, Class<T> clazz, String name){
-        UserNetInfo userNetInfo = user.getUserNetInfo();
+        final UserNetInfo userNetInfo = user.getUserNetInfo();
         return RmiClient.lookupService(userNetInfo.getIp(), userNetInfo.getPort(), name, clazz);
     }
 

@@ -1,15 +1,12 @@
 package com.rubyko.client.common;
 
-import android.content.Context;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.Display;
 
-import com.rubyko.client.RubykoApplication;
+import com.rubyko.RubykoApplication;
 
 /**
  * Created by yegor on 14/02/16.
@@ -55,4 +52,6 @@ public abstract class RubykoBaseActivity extends FragmentActivity {
     public RubykoApplication getApplicationContext() {
         return (RubykoApplication) super.getApplicationContext();
     }
+
+
 }
