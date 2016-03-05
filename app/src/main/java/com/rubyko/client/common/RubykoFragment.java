@@ -13,8 +13,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
-import com.rubyko.shared.common.net.model.UserNetInfo;
-
 /**
  * Created by yegor on 14/02/16.
  */

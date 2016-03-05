@@ -8,6 +8,7 @@ import com.rubyko.client.common.RubykoFragment;
 import com.rubyko.client.common.adapter.RubykoPagerAdapter;
 import com.rubyko.client.common.view.RubykoParallaxViewPager;
 import com.rubyko.client.login.fragment.ChooseFragment;
+
 import tyrantgit.explosionfield.ExplosionField;
 
 /**

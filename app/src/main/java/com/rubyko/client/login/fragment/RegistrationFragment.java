@@ -1,9 +1,11 @@
 package com.rubyko.client.login.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +13,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 
+import com.rubyko.client.common.RubykoClient;
 import com.rubyko.client.common.RubykoFragment;
+import com.rubyko.client.common.database.Database;
 import com.rubyko.client.login.LoginRubykoActivity;
 import com.rubyko.client.R;
 import com.rubyko.client.login.validation.LocalValidator;
@@ -20,13 +24,16 @@ import com.rubyko.client.login.validation.concrete.PasswordIdentityValidation;
 import com.rubyko.client.login.validation.concrete.PasswordValidator;
 import com.rubyko.client.login.validation.concrete.UserNameValidator;
 import com.rubyko.client.login.view.RubykoEditText;
+import com.rubyko.client.main.MainRubykoActivity;
+import com.rubyko.rmi.RmiCheckedException;
+import com.rubyko.shared.boss.login.LoginUserService;
+import com.rubyko.shared.boss.login.RegisterUserService;
 import com.rubyko.shared.common.login.model.User;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 public final class RegistrationFragment extends RubykoFragment<LoginRubykoActivity> implements View.OnClickListener {
-
-
 
     private LocalValidator<String, RubykoEditText> localValidator;
 
@@ -54,45 +61,76 @@ public final class RegistrationFragment extends RubykoFragment<LoginRubykoActivi
             final String userName = localValidator.getDataAll(R.id.editText_registr_userName);
             final String email = localValidator.getDataAll(R.id.editText_registr_email);
             final String pass = localValidator.getDataAll(R.id.editText_registr_password);
-
-            final User noUser = new User(pass, email, null, null, userName);
-          LoadingFragment.show(getFragmentActivity(), new RegisterRunnable(noUser));
-
+            final User user = new User(pass, email, null, null, userName);
+            LoadingFragment.show(getFragmentActivity(), new RegisterRunnable(this, user));
         } else {
             localValidator.updateAll();
         }
     }
+}
 
-    private class RegisterRunnable implements Runnable, Serializable {
+class RegisterRunnable implements Runnable, Serializable {
 
-        private final User noUser;
+    private final User mUser;
 
-        private Context context =  RegistrationFragment.this.getActivity().getApplicationContext();
+    private final RegistrationFragment registrationFragment;
 
-        public RegisterRunnable(final User noUser){
-            this.noUser = noUser;
+    public RegisterRunnable(RegistrationFragment registrationFragment, final User user) {
+        this.mUser = user;
+        this.registrationFragment = registrationFragment;
+    }
+
+    @Override
+    public void run() {
+        final RegisterUserService registerUserService = RubykoClient.lookupService(RegisterUserService.class, RegisterUserService.objectName1);
+        try {
+            final User user = registerUserService.register(mUser);
+            Database.getDatabase().save(user, user.getClass().getName());
+            registrationFragment.getFragmentActivity().runOnUiThread(new LoginSucessRunnable(user));
+        } catch (final RmiCheckedException e) {
+            registrationFragment.getFragmentActivity().runOnUiThread(new LoginExceptionTask(e));
+        } catch (final IOException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    private void hideLoadingFragment() {
+        final FragmentManager fragmentManager = registrationFragment.getFragmentActivity().getSupportFragmentManager();
+        fragmentManager.popBackStackImmediate();
+    }
+
+    private class LoginSucessRunnable implements Runnable {
+        private final User user;
+
+        public LoginSucessRunnable(User user) {
+            this.user = user;
         }
 
         @Override
         public void run() {
-            while (true){
-                try {
-                    Thread.sleep(2_000);
-                } catch (Exception e){}
+            hideLoadingFragment();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(LoadingFragment.TASK, user);
+            Intent intent = new Intent(registrationFragment.getContext(), MainRubykoActivity.class);
+         //   registrationFragment.startActivity(intent);
+          //  registrationFragment.getFragmentActivity().finish();
+        }
+    }
 
-                new Handler(context.getMainLooper()).post(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(context, "REISTRATION", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-            //   final RegisterUserService loginUserService = RubykoClient.lookupService(RegisterUserService.class, RegisterUserService.objectName1);
-         //   User authedUser = loginUserService.register(noUser);
-            // START MAIN FRAGMENY
+    private class LoginExceptionTask implements Runnable {
+        final RmiCheckedException rmiCheckedException;
+
+        public LoginExceptionTask(RmiCheckedException rmiCheckedException) {
+            this.rmiCheckedException = rmiCheckedException;
         }
 
+        @Override
+        public void run() {
+            Toast.makeText(registrationFragment.getFragmentActivity(), rmiCheckedException.getMessage(), Toast.LENGTH_SHORT).show();
+            hideLoadingFragment();
+        }
     }
+
 }
 
 

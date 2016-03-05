@@ -3,7 +3,7 @@ package com.rubyko.client.common;
 
 import com.rubyko.rmi.RmiClient;
 import com.rubyko.shared.common.login.model.User;
-import com.rubyko.shared.common.net.model.UserNetInfo;
+import com.rubyko.shared.common.net.model.PeerServerInfo;
 
 /**
  * Created by alex on 23.02.16.
@@ -21,8 +21,8 @@ public class RubykoClient {
 
     // peer
     public static <T> T lookupService(User user, Class<T> clazz, String name){
-        final UserNetInfo userNetInfo = user.getUserNetInfo();
-        return RmiClient.lookupService(userNetInfo.getIp(), userNetInfo.getPort(), name, clazz);
+        final PeerServerInfo peerServerInfo = user.getPeerServerInfo();
+        return RmiClient.lookupService(peerServerInfo.getIp(), peerServerInfo.getPort(), name, clazz);
     }
 
 }

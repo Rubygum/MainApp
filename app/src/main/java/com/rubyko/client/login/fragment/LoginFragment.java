@@ -52,7 +52,6 @@ public final class LoginFragment extends RubykoFragment<LoginRubykoActivity> imp
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId()) {
             case R.id.loginDoneBtn: {
                 if (localValidator.isValid()) {

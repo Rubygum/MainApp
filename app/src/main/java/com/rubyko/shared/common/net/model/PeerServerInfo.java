@@ -5,14 +5,17 @@ import java.io.Serializable;
 /**
  * Created by alex on 28.02.16.
  */
-public class UserNetInfo implements Serializable {
+public class PeerServerInfo implements Serializable {
 
-    private final Integer mPort;
-    private final String mIp;
+    private Integer mPort;
+    private String mIp;
 
-    public UserNetInfo(final Integer pPort, final String pIp){
-        mPort = pPort;
-        mIp = pIp;
+    public void setPort(Integer pPort){
+        this.mPort = pPort;
+    }
+
+    public  void setIp(String pIp){
+        this.mIp = pIp;
     }
 
     public Integer getPort() {

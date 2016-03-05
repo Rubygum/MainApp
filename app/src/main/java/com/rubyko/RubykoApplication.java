@@ -1,19 +1,18 @@
 package com.rubyko;
 
-import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Bundle;
 
 import com.rubyko.client.receiver.ConnectivityChangeReceiver;
+import com.rubyko.client.receiver.PeerNetInfoListener;
 
 /**
  * Created by yegor on 14/02/16.
  */
-public class RubykoApplication extends Application implements Application.ActivityLifecycleCallbacks {
+public class RubykoApplication extends Application  {
 
     private static RubykoApplication instance;
 
@@ -25,69 +24,18 @@ public class RubykoApplication extends Application implements Application.Activi
         return instance;
     }
 
-    private boolean isDestroyed = false;
-    private boolean isStopped = false;
-    private boolean isPaused = false;
-
-    public RubykoApplication() {
-        registerActivityLifecycleCallbacks(this);
-    }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        ConnectivityChangeReceiver connectivityChangeReceiver = new ConnectivityChangeReceiver();
+
+        final ConnectivityChangeReceiver connectivityChangeReceiver = new ConnectivityChangeReceiver();
         registerReceiver(connectivityChangeReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 
-        ConnectivityManager connManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo info = connManager.getActiveNetworkInfo();
-
+//        ConnectivityManager connManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+//        NetworkInfo info = connManager.getActiveNetworkInfo();
     }
 
-    @Override
-    public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-        isDestroyed = false;
-    }
 
-    @Override
-    public void onActivityStarted(Activity activity) {
-        isStopped = false;
-    }
 
-    @Override
-    public void onActivityResumed(Activity activity) {
-        isPaused = false;
-    }
-
-    @Override
-    public void onActivityPaused(Activity activity) {
-        isPaused = true;
-    }
-
-    @Override
-    public void onActivityStopped(Activity activity) {
-        isStopped = true;
-    }
-
-    @Override
-    public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
-
-    }
-
-    @Override
-    public void onActivityDestroyed(Activity activity) {
-        isDestroyed = true;
-    }
-
-    public boolean isDestroyed() {
-        return isDestroyed;
-    }
-
-    public boolean isStopped() {
-        return isStopped;
-    }
-
-    public boolean isPaused() {
-        return isPaused;
-    }
 }

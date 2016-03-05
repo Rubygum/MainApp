@@ -1,7 +1,7 @@
 package com.rubyko.shared.common.login.model;
 
 import com.rubyko.shared.boss.net.BossUserNetInfoUpdater;
-import com.rubyko.shared.common.net.model.UserNetInfo;
+import com.rubyko.shared.common.net.model.PeerServerInfo;
 import com.rubyko.shared.peer.net.PeerUserNetInfoUpdater;
 
 import java.io.Serializable;
@@ -11,6 +11,7 @@ import java.io.Serializable;
  */
 public final class User implements Serializable, PeerUserNetInfoUpdater, BossUserNetInfoUpdater {
 
+
     private final String mPassword;
     private final String mEmail;
 
@@ -18,8 +19,16 @@ public final class User implements Serializable, PeerUserNetInfoUpdater, BossUse
     private final String mToken;
     private final String mUserName;
 
-    private UserNetInfo userNetInfo;
+    private PeerServerInfo peerServerInfo;
     private boolean online;
+
+    public User(String mPassword, String pEmail) {
+        this.mPassword = mPassword;
+        this.mEmail = pEmail;
+        this.mId = null;
+        this.mToken = null;
+        this.mUserName = null;
+    }
 
     public User(String mPassword, String pEmail, String mId, String mToken, String mUserName) {
         this.mPassword = mPassword;
@@ -45,13 +54,8 @@ public final class User implements Serializable, PeerUserNetInfoUpdater, BossUse
         return mUserName;
     }
 
-    @Override
-    public void update(UserNetInfo userNetInfo) {
-        this.userNetInfo = userNetInfo;
-    }
-
-    public UserNetInfo getUserNetInfo() {
-        return userNetInfo;
+    public PeerServerInfo getPeerServerInfo() {
+        return peerServerInfo;
     }
 
     public boolean isOnline() {
@@ -61,5 +65,26 @@ public final class User implements Serializable, PeerUserNetInfoUpdater, BossUse
     public void setOnline(boolean online) {
         this.online = online;
     }
+
+
+    public String getEmail(){
+        return mEmail;
+    }
+
+    public String getPassword(){
+        return mPassword;
+    }
+
+    @Override
+    public void update(PeerServerInfo peerServerInfo) {
+        this.peerServerInfo = peerServerInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "User [mPassword=" + mPassword + ", mEmail=" + mEmail + ", mId=" + mId + ", mToken=" + mToken
+                + ", mUserName=" + mUserName + ", peerServerInfo=" + peerServerInfo + ", online=" + online + "]";
+    }
+
 
 }

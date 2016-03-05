@@ -38,16 +38,16 @@ public class LoadingFragment extends RubykoBlurFragment<LoginRubykoActivity> imp
 
         mLoadingView = (LoadingView) view.findViewById(R.id.loading_view_repeat);
         boolean isLollipop = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
-        int marvel_1 = isLollipop?R.drawable.marvel_1_lollipop:R.drawable.marvel_1;
-        int marvel_2 = isLollipop?R.drawable.marvel_2_lollipop:R.drawable.marvel_2;
-        int marvel_3 = isLollipop?R.drawable.marvel_3_lollipop:R.drawable.marvel_3;
-        int marvel_4 = isLollipop?R.drawable.marvel_4_lollipop:R.drawable.marvel_4;
+        int marvel_1 = isLollipop ? R.drawable.marvel_1_lollipop : R.drawable.marvel_1;
+        int marvel_2 = isLollipop ? R.drawable.marvel_2_lollipop : R.drawable.marvel_2;
+        int marvel_3 = isLollipop ? R.drawable.marvel_3_lollipop : R.drawable.marvel_3;
+        int marvel_4 = isLollipop ? R.drawable.marvel_4_lollipop : R.drawable.marvel_4;
 
-        mLoadingView.addAnimation(Color.parseColor("#FFD200"),marvel_1,
+        mLoadingView.addAnimation(Color.parseColor("#FFD200"), marvel_1,
                 LoadingView.FROM_LEFT);
-        mLoadingView.addAnimation(Color.parseColor("#2F5DA9"),marvel_2,
+        mLoadingView.addAnimation(Color.parseColor("#2F5DA9"), marvel_2,
                 LoadingView.FROM_TOP);
-        mLoadingView.addAnimation(Color.parseColor("#FF4218"),marvel_3,
+        mLoadingView.addAnimation(Color.parseColor("#FF4218"), marvel_3,
                 LoadingView.FROM_RIGHT);
         mLoadingView.addAnimation(Color.parseColor("#C7E7FB"), marvel_4,
                 LoadingView.FROM_BOTTOM);
@@ -67,12 +67,12 @@ public class LoadingFragment extends RubykoBlurFragment<LoginRubykoActivity> imp
     @Override
     public void run() {
         mLoadingView.startAnimation();
-        if(this.getView()!=null){
+        if (this.getView() != null) {
             this.getView().postDelayed(this, 5_00);
         }
     }
 
-    public static void show(RubykoBaseActivity baseActivity, Serializable runnable){
+    public static void show(RubykoBaseActivity baseActivity, Serializable runnable) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(LoadingFragment.TASK, runnable);
         baseActivity.showFragment(bundle, LoadingFragment.class);
