@@ -2,8 +2,7 @@ package com.rubyko.client.common;
 
 
 import com.rubyko.rmi.RmiClient;
-import com.rubyko.shared.common.login.model.User;
-import com.rubyko.shared.common.net.model.PeerServerInfo;
+import com.rubyko.shared.NetInfo;
 
 /**
  * Created by alex on 23.02.16.
@@ -20,8 +19,8 @@ public class RubykoClient {
     }
 
     // peer
-    public static <T> T lookupService(PeerServerInfo peerServerInfo, Class<T> clazz, String name){
-        return RmiClient.lookupService(peerServerInfo.getIp(), peerServerInfo.getPort(), name, clazz);
+    public static <T> T lookupService(NetInfo netInfo, Class<T> clazz, String name){
+        return RmiClient.lookupService(netInfo.getIP(), netInfo.getPort(), name, clazz);
     }
 
 }

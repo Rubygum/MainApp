@@ -1,12 +1,13 @@
 package com.rubyko.server;
 
 import com.rubyko.rmi.RmiServer;
-import com.rubyko.shared.common.net.model.PeerServerInfo;
+import com.rubyko.shared.NetInfo;
 
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.ServerSocket;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,36 +17,53 @@ import java.util.List;
 public class RubykoServer {
 
     private static final RubykoServer rubykoServer = new RubykoServer();
-
     private final RmiServer rmiServer;
-    private final PeerServerInfo peerServerInfo = new PeerServerInfo();
+    private final NetInfo netInfo;
+
+    private List<LocalUpdateNetInfo> list = new ArrayList<>();
+
+    public void addListener(LocalUpdateNetInfo updateable) {
+        list.add(updateable);
+    }
+
+    public void removeListener(LocalUpdateNetInfo updateable) {
+        list.remove(updateable);
+    }
+
+    private void update() {
+        for (LocalUpdateNetInfo updateable : list) {
+            updateable.update(netInfo);
+        }
+    }
 
     private RubykoServer() {
         // peek up the right port number
-        int portNumber = findFreePort();
-        String ip = getIPAddress(false);
+        final int portNumber = findFreePort();
+        final String ip = getIPAddress(false);
 
         // create rmi server
         rmiServer = new RmiServer(portNumber);
 
         // update network info
-        peerServerInfo.setIp(ip);
-        peerServerInfo.setPort(portNumber);
+        netInfo = new NetInfo(ip, portNumber);
     }
 
+    public static RubykoServer getInstance() {
+        return rubykoServer;
+    }
 
-    public static void updateIp(){
+    public void updateIp() {
         final String ip = rubykoServer.getIPAddress(true);
-        rubykoServer.peerServerInfo.setIp(ip);
+        rubykoServer.netInfo.setIP(ip);
+        update();
     }
 
-    public static void registerService(String serviceName, Object serviceImpl){
+    public static void registerService(String serviceName, Object serviceImpl) {
         rubykoServer.rmiServer.registerService(serviceName, serviceImpl);
     }
 
-
-    public static PeerServerInfo getPeerServerInfo() {
-        return rubykoServer.peerServerInfo;
+    public NetInfo getNetInfo() {
+        return netInfo;
     }
 
     private int findFreePort() {
@@ -94,12 +112,12 @@ public class RubykoServer {
     }
 
 
-    public static void start(){
+    public static void start() {
         rubykoServer.rmiServer.start();
     }
 
 
-    public static void stop(){
+    public static void stop() {
         rubykoServer.rmiServer.stop();
     }
 

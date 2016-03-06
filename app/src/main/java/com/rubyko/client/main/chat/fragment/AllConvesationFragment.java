@@ -15,9 +15,9 @@ import com.rubyko.client.common.database.Database;
 import com.rubyko.client.login.fragment.LoadingFragment;
 import com.rubyko.client.main.MainRubykoActivity;
 import com.rubyko.server.RubykoServer;
-import com.rubyko.shared.common.login.model.User;
-import com.rubyko.shared.peer.chat.Speaker;
-import com.rubyko.shared.peer.chat.implementation.SpeakerImpl;
+import com.rubyko.shared.common.login.model.AccessCard;
+import com.rubyko.shared.peer.chat.ChatBox;
+import com.rubyko.shared.peer.chat.impl.ChatBoxImpl;
 
 import java.io.Serializable;
 
@@ -31,8 +31,8 @@ public class AllConvesationFragment extends RubykoFragment<MainRubykoActivity> {
     public View onCreateView(LayoutInflater pInflater, ViewGroup pContainer, Bundle savedInstanceState) {
         final View view = pInflater.inflate(R.layout.fragment_allconversation, pContainer, false);
         try {
-            User user = Database.getDatabase().get(User.class.getName());
-            LoadingFragment.show(getFragmentActivity(), new AllConversationRunnable(this, user));
+            AccessCard accessCard = Database.getDatabase().get(AccessCard.class.getName());
+            LoadingFragment.show(getFragmentActivity(), new AllConversationRunnable(this, accessCard));
         } catch (Exception e){
             throw new RuntimeException(e.getCause());
         }
@@ -42,11 +42,11 @@ public class AllConvesationFragment extends RubykoFragment<MainRubykoActivity> {
 
 class AllConversationRunnable implements Runnable, Serializable {
 
-    private final User mUser;
+    private final AccessCard mAccessCard;
     private final AllConvesationFragment allConvesationFragment;
 
-    public AllConversationRunnable(AllConvesationFragment allConvesationFragment, final User pUser) {
-        this.mUser = pUser;
+    public AllConversationRunnable(AllConvesationFragment allConvesationFragment, final AccessCard pAccessCard) {
+        this.mAccessCard = pAccessCard;
         this.allConvesationFragment = allConvesationFragment;
     }
 
@@ -54,10 +54,11 @@ class AllConversationRunnable implements Runnable, Serializable {
     public void run() {
         try {
             // create the RMI server
-            RubykoServer.registerService("11111", new SpeakerImpl("111"));
+            final AccessCard accessCard =  Database.getDatabase().get(AccessCard.class.getName());
+            RubykoServer.registerService("11111", new ChatBoxImpl(accessCard, "111"));
             RubykoServer.start();
-            final Speaker speaker = RubykoClient.lookupService(mUser.getPeerServerInfo(), Speaker.class, "11111");
-            allConvesationFragment.getFragmentActivity().runOnUiThread(new AllConversationSucessRunnable(speaker));
+            final ChatBox chatBox = RubykoClient.lookupService(RubykoServer.getInstance().getNetInfo(), ChatBox.class, "11111");
+            allConvesationFragment.getFragmentActivity().runOnUiThread(new AllConversationSucessRunnable(chatBox));
         } catch (final Exception e) {
             allConvesationFragment.getFragmentActivity().runOnUiThread(new AllConversationExceptionRunnable(e));
         }
@@ -70,17 +71,17 @@ class AllConversationRunnable implements Runnable, Serializable {
 
     private class AllConversationSucessRunnable implements Runnable {
 
-        private final Speaker speaker;
+        private final ChatBox chatBox;
 
-        public AllConversationSucessRunnable(Speaker speaker) {
-            this.speaker = speaker;
+        public AllConversationSucessRunnable(ChatBox chatBox) {
+            this.chatBox = chatBox;
         }
 
         @Override
         public void run() {
             hideLoadingFragment();
             Bundle bundle = new Bundle();
-            bundle.putSerializable(Speaker.class.getName(), speaker);
+            bundle.putSerializable(ChatBox.class.getName(), chatBox);
             allConvesationFragment.getFragmentActivity().replaceFragment(bundle, SpecificConversationFragment.class);
         }
     }

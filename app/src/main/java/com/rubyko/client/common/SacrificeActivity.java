@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.rubyko.client.common.database.Database;
 import com.rubyko.client.login.LoginRubykoActivity;
 import com.rubyko.client.main.MainRubykoActivity;
-import com.rubyko.shared.common.login.model.User;
+import com.rubyko.shared.common.login.model.AccessCard;
 
 
 import java.io.FileNotFoundException;
@@ -22,9 +22,9 @@ public class SacrificeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
-            final User user = Database.getDatabase().get(User.class.getName());
+            final AccessCard accessCard = Database.getDatabase().get(AccessCard.class.getName());
             final Intent intent;
-            if(user != null && user.isTokenValid()){
+            if(accessCard != null && accessCard.isTokenValid()){
                 intent = new Intent(this, MainRubykoActivity.class);
             } else {
                 intent = new Intent(this, LoginRubykoActivity.class);

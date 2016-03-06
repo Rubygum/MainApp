@@ -3,7 +3,7 @@ package com.rubyko.shared.boss.login;
 import com.rubyko.shared.boss.login.exception.DataFormatException;
 import com.rubyko.shared.boss.login.exception.DataLimitException;
 import com.rubyko.shared.boss.login.exception.UserDoesntExistException;
-import com.rubyko.shared.common.login.model.User;
+import com.rubyko.shared.common.login.model.AccessCard;
 
 import java.io.Serializable;
 
@@ -14,6 +14,6 @@ public interface LoginUserService extends Serializable {
 
     String objectName1 = "LOGIN_USER_SERVICE";
 
-    User login(User pUser) throws UserDoesntExistException, DataFormatException, DataLimitException;
+    AccessCard login(AccessCard pAccessCard) throws UserDoesntExistException, DataFormatException, DataLimitException;
 
 }

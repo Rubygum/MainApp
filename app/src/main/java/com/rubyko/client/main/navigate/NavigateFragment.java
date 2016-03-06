@@ -9,14 +9,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.rubyko.client.R;
-import com.rubyko.client.common.RubykoBaseActivity;
 import com.rubyko.client.common.database.Database;
 import com.rubyko.client.login.LoginRubykoActivity;
 import com.rubyko.client.common.RubykoFragment;
-import com.rubyko.client.login.fragment.LoginFragment;
 import com.rubyko.client.main.MainRubykoActivity;
 import com.rubyko.client.main.chat.fragment.AllConvesationFragment;
-import com.rubyko.shared.common.login.model.User;
+import com.rubyko.shared.common.login.model.AccessCard;
 
 import java.io.IOException;
 
@@ -63,7 +61,7 @@ public class NavigateFragment extends RubykoFragment<MainRubykoActivity> impleme
 
     private void performLogout(){
         try {
-            Database.getDatabase().save(null, User.class.getName());
+            Database.getDatabase().save(null, AccessCard.class.getName());
             Intent intent = new Intent(this.getFragmentActivity(), LoginRubykoActivity.class);
             startActivity(intent);
             getFragmentActivity().finish();

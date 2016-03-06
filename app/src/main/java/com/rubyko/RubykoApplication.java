@@ -1,13 +1,10 @@
 package com.rubyko;
 
 import android.app.Application;
-import android.content.Context;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 
 import com.rubyko.client.receiver.ConnectivityChangeReceiver;
-import com.rubyko.client.receiver.PeerNetInfoListener;
 
 /**
  * Created by yegor on 14/02/16.

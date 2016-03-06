@@ -13,7 +13,7 @@ public class ConnectivityChangeReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        RubykoServer.updateIp();
+        RubykoServer.getInstance().updateIp();
     }
 
 }

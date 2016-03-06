@@ -14,7 +14,7 @@ import com.rubyko.client.R;
 import com.rubyko.client.common.RubykoFragment;
 import com.rubyko.client.main.MainRubykoActivity;
 import com.rubyko.client.main.chat.adapter.ChatRecyclerViewAdapter;
-import com.rubyko.shared.peer.chat.Speaker;
+import com.rubyko.shared.peer.chat.ChatBox;
 import com.rubyko.shared.common.chat.model.Message;
 
 import java.util.concurrent.Executor;
@@ -29,7 +29,7 @@ public class SpecificConversationFragment extends RubykoFragment<MainRubykoActiv
     private LinearLayoutManager mLayoutManager;
     private ChatRecyclerViewAdapter mAdapter;
     private EditText mMessageEdt;
-    private Speaker mSpeaker;
+    private ChatBox mChatBox;
 
     private Executor executor = Executors.newSingleThreadExecutor();
 
@@ -44,7 +44,7 @@ public class SpecificConversationFragment extends RubykoFragment<MainRubykoActiv
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new ChatRecyclerViewAdapter();
         mRecyclerView.setAdapter(mAdapter);
-        mSpeaker =  (Speaker) getArguments().getSerializable(Speaker.class.getName());
+        mChatBox =  (ChatBox) getArguments().getSerializable(ChatBox.class.getName());
 
         final Button sendBtn = (Button) view.findViewById(R.id.chat_message_send_btn);
         mMessageEdt = (EditText) view.findViewById(R.id.chat_message_content_edt);
@@ -57,7 +57,7 @@ public class SpecificConversationFragment extends RubykoFragment<MainRubykoActiv
         switch (v.getId()) {
             case R.id.chat_message_send_btn:
                 final Message message = new Message(mMessageEdt.getText().toString());
-                executor.execute(new SendMessageRunnable(mSpeaker, message));
+                executor.execute(new SendMessageRunnable(mChatBox, message));
                 mAdapter.addItem(message);
                 mRecyclerView.smoothScrollToPosition(mAdapter.getItemCount());
                 break;
@@ -69,16 +69,16 @@ public class SpecificConversationFragment extends RubykoFragment<MainRubykoActiv
 class SendMessageRunnable implements  Runnable {
 
     private final Message message;
-    private final Speaker speaker;
+    private final ChatBox chatBox;
 
-    SendMessageRunnable(Speaker speaker, Message message){
+    SendMessageRunnable(ChatBox chatBox, Message message){
         this.message = message;
-        this.speaker = speaker;
+        this.chatBox = chatBox;
     }
 
     @Override
     public void run() {
-        speaker.speak(message);
+        chatBox.speak(message);
     }
 
 }

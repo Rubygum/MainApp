@@ -1,9 +1,7 @@
 package com.rubyko.client.login.fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
@@ -26,9 +24,8 @@ import com.rubyko.client.login.validation.concrete.UserNameValidator;
 import com.rubyko.client.login.view.RubykoEditText;
 import com.rubyko.client.main.MainRubykoActivity;
 import com.rubyko.rmi.RmiCheckedException;
-import com.rubyko.shared.boss.login.LoginUserService;
 import com.rubyko.shared.boss.login.RegisterUserService;
-import com.rubyko.shared.common.login.model.User;
+import com.rubyko.shared.common.login.model.AccessCard;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -61,8 +58,8 @@ public final class RegistrationFragment extends RubykoFragment<LoginRubykoActivi
             final String userName = localValidator.getDataAll(R.id.editText_registr_userName);
             final String email = localValidator.getDataAll(R.id.editText_registr_email);
             final String pass = localValidator.getDataAll(R.id.editText_registr_password);
-            final User user = new User(pass, email, null, null, userName);
-            LoadingFragment.show(getFragmentActivity(), new RegisterRunnable(this, user));
+            final AccessCard accessCard = new AccessCard(pass, email, null, null, userName);
+            LoadingFragment.show(getFragmentActivity(), new RegisterRunnable(this, accessCard));
         } else {
             localValidator.updateAll();
         }
@@ -71,12 +68,12 @@ public final class RegistrationFragment extends RubykoFragment<LoginRubykoActivi
 
 class RegisterRunnable implements Runnable, Serializable {
 
-    private final User mUser;
+    private final AccessCard mAccessCard;
 
     private final RegistrationFragment registrationFragment;
 
-    public RegisterRunnable(RegistrationFragment registrationFragment, final User user) {
-        this.mUser = user;
+    public RegisterRunnable(RegistrationFragment registrationFragment, final AccessCard accessCard) {
+        this.mAccessCard = accessCard;
         this.registrationFragment = registrationFragment;
     }
 
@@ -84,9 +81,9 @@ class RegisterRunnable implements Runnable, Serializable {
     public void run() {
         final RegisterUserService registerUserService = RubykoClient.lookupService(RegisterUserService.class, RegisterUserService.objectName1);
         try {
-            final User user = registerUserService.register(mUser);
-            Database.getDatabase().save(user, user.getClass().getName());
-            registrationFragment.getFragmentActivity().runOnUiThread(new LoginSucessRunnable(user));
+            final AccessCard accessCard = registerUserService.register(mAccessCard);
+            Database.getDatabase().save(accessCard, accessCard.getClass().getName());
+            registrationFragment.getFragmentActivity().runOnUiThread(new LoginSucessRunnable(accessCard));
         } catch (final RmiCheckedException e) {
             registrationFragment.getFragmentActivity().runOnUiThread(new LoginExceptionTask(e));
         } catch (final IOException e) {
@@ -100,17 +97,17 @@ class RegisterRunnable implements Runnable, Serializable {
     }
 
     private class LoginSucessRunnable implements Runnable {
-        private final User user;
+        private final AccessCard accessCard;
 
-        public LoginSucessRunnable(User user) {
-            this.user = user;
+        public LoginSucessRunnable(AccessCard accessCard) {
+            this.accessCard = accessCard;
         }
 
         @Override
         public void run() {
             hideLoadingFragment();
             Bundle bundle = new Bundle();
-            bundle.putSerializable(LoadingFragment.TASK, user);
+            bundle.putSerializable(LoadingFragment.TASK, accessCard);
             Intent intent = new Intent(registrationFragment.getContext(), MainRubykoActivity.class);
             registrationFragment.startActivity(intent);
             registrationFragment.getFragmentActivity().finish();
