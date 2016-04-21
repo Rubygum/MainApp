@@ -1,2 +1,3 @@
 # Application for Collision detection, Chatting, Video conversations. In progress...
-test
+
+used jitpack.io for RMI-flexible
